@@ -41,6 +41,17 @@ export GEMINI_API_KEY=your_api_key
 go run main.go
 ```
 
+# 修改完ai api key后正常运行
+DAP server listening at: 127.0.0.1:58627
+Type 'dlv help' for list of commands.
+Prompt: Hello! Please introduce yourself.
+Response: Hello! I am a large language model, trained by Google. I am designed to provide information and complete tasks based on the instructions and data I've been trained on. Essentially, I can generate text, translate languages, write different kinds of creative content, and answer your questions in an informative way. I am still under development, learning new things every day!
+
+How can I help you today?
+
+Process 37492 has exited with status 0
+Detaching
+
 ### 3.2 业务服务器
 ```bash
 # 进入项目目录
