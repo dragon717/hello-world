@@ -1,3 +1,3 @@
 module ai-mcp-server/src
 
-go 1.21 
+go 1.21
