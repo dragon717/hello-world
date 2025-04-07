@@ -31,9 +31,9 @@ func init() {
 	GlobalConfig.Redis.Host = "localhost"
 	GlobalConfig.Redis.Port = 6379
 	GlobalConfig.Redis.DB = 0
-	GlobalConfig.Redis.Enabled = false
+	GlobalConfig.Redis.Enabled = true
 
 	GlobalConfig.MCP.Host = "localhost"
-	GlobalConfig.MCP.Port = 8082
-	GlobalConfig.MCP.Enabled = false
+	GlobalConfig.MCP.Port = 8888
+	GlobalConfig.MCP.Enabled = true
 }

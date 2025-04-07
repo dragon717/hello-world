@@ -34,15 +34,18 @@ func LoadConfig(configPath string) (*Config, error) {
 		return nil, fmt.Errorf("error reading config file: %w", err)
 	}
 
+	// Replace environment variables in the config
+	configContent := os.ExpandEnv(string(data))
+
 	// Parse the YAML
 	var config Config
-	if err := yaml.Unmarshal(data, &config); err != nil {
+	if err := yaml.Unmarshal([]byte(configContent), &config); err != nil {
 		return nil, fmt.Errorf("error parsing config file: %w", err)
 	}
 
 	// Validate required fields
 	if config.Gemini.APIKey == "" {
-		return nil, fmt.Errorf("gemini api_key is required")
+		return nil, fmt.Errorf("gemini api_key is required. Please set the GEMINI_API_KEY environment variable")
 	}
 
 	return &config, nil
