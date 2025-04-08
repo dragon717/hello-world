@@ -22,7 +22,7 @@ func main() {
 	}
 
 	// 解析命令行参数
-	configPath := flag.String("config", filepath.Join(wd, "..", "..", "config.yaml"), "Path to config file")
+	configPath := flag.String("config", filepath.Join(wd, "config.yaml"), "Path to config file")
 	flag.Parse()
 
 	// 加载配置
