@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package ai;
+
+option go_package = "github.com/hello-world/proto/ai";
+
+// 实体位置信息
+message Position {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+// 实体基础信息
+message EntityInfo {
+  string id = 1;
+  string type = 2;  // TREE, WOODCUTTER
+  Position position = 3;
+  map<string, float> attributes = 4;  // hp, energy等属性
+}
+
+// 地图信息
+message MapInfo {
+  repeated EntityInfo entities = 1;
+}
+
+// AI决策请求
+message DecisionRequest {
+  EntityInfo actor = 1;  // 决策主体
+  MapInfo map_info = 2;  // 当前地图信息
+  string current_state = 3;  // 当前状态
+}
+
+// AI决策响应
+message DecisionResponse {
+  string action_type = 1;  // MOVE, CHOP, LEARN_SKILL
+  string target_id = 2;    // 目标实体ID
+  Position target_position = 3;  // 目标位置
+  repeated string sub_commands = 4;  // 具体的执行指令列表
+}
+
+// AI服务
+service AIService {
+  rpc GetDecision(DecisionRequest) returns (DecisionResponse);
+} 
