@@ -3,10 +3,9 @@ package network
 import (
 	"context"
 	"fmt"
+	"github.com/hello-world/common/logger"
 	"net"
 	"sync"
-
-	"ai-mcp-server/src/logger"
 )
 
 // TCPServer represents the TCP server instance

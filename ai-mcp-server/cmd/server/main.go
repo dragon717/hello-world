@@ -57,26 +57,22 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to get working directory: %v", err)
 	}
-
 	// Load configuration from the same directory
 	configPath := filepath.Join(wd, "config.yaml")
 	cfg, err := config.LoadConfig(configPath)
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
-
 	// Create Gemini service
 	geminiService, err := service.NewGeminiService(cfg.Gemini.APIKey, cfg.Gemini.Model)
 	if err != nil {
 		log.Fatalf("Failed to create Gemini service: %v", err)
 	}
 	defer geminiService.Close()
-
 	// 设置 WebSocket 路由
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		handleWebSocket(w, r, geminiService)
 	})
-
 	// 启动 HTTP 服务器
 	addr := fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)
 	log.Printf("AI MCP Server started on %s", addr)
@@ -93,14 +89,11 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request, geminiService *serv
 		return
 	}
 	defer conn.Close()
-
 	clientAddr := conn.RemoteAddr().String()
 	log.Printf("New WebSocket connection from %s", clientAddr)
-
 	// 设置读写超时
 	conn.SetReadDeadline(time.Now().Add(30 * time.Second))
 	conn.SetWriteDeadline(time.Now().Add(30 * time.Second))
-
 	// 处理消息循环
 	for {
 		// 读取消息
@@ -109,11 +102,9 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request, geminiService *serv
 			log.Printf("Error reading from %s: %v", clientAddr, err)
 			return
 		}
-
 		// 重置读写超时
 		conn.SetReadDeadline(time.Now().Add(30 * time.Second))
 		conn.SetWriteDeadline(time.Now().Add(30 * time.Second))
-
 		// 解析请求
 		var request Request
 		if err := json.Unmarshal(message, &request); err != nil {
@@ -121,13 +112,11 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request, geminiService *serv
 			sendErrorResponse(conn, "Invalid request format")
 			continue
 		}
-
 		// 为每个实体生成决策
 		response := Response{
 			Success: true,
 			Data:    make(map[string]ActionData),
 		}
-
 		// 处理每个实体
 		for _, entity := range request.Entities {
 			entityData, ok := entity.(map[string]interface{})
@@ -137,7 +126,6 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request, geminiService *serv
 
 			id, _ := entityData["id"].(string)
 			entityType, _ := entityData["type"].(string)
-
 			// 根据实体类型生成决策
 			switch entityType {
 			case "WOODCUTTER":
@@ -149,13 +137,11 @@ func handleWebSocket(w http.ResponseWriter, r *http.Request, geminiService *serv
 					log.Printf("Error generating response: %v", err)
 					continue
 				}
-
 				// 解析 AI 响应并生成决策
 				decision := parseAIResponse(aiResponse)
 				response.Data[id] = decision
 			}
 		}
-
 		// 发送响应
 		if err := conn.WriteJSON(response); err != nil {
 			log.Printf("Error writing to %s: %v", clientAddr, err)

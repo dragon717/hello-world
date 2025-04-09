@@ -8,8 +8,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hello-world/logic-server/ai"
 	"github.com/hello-world/logic-server/entity"
+	"github.com/hello-world/logic-server/offline_ai"
 )
 
 const (
@@ -21,7 +21,7 @@ func main() {
 	log.Println("Starting woodcutter simulation...")
 
 	// 创建 AI 客户端
-	aiClient := ai.NewClient(aiServerAddress, aiPoolSize)
+	aiClient := offline_ai.NewClient(aiServerAddress, aiPoolSize)
 	defer aiClient.Close()
 
 	// 创建地图和实体
@@ -54,7 +54,7 @@ func main() {
 }
 
 // processWoodcutterLogic 处理樵夫的逻辑
-func processWoodcutterLogic(ctx context.Context, aiClient *ai.Client, woodcutter *entity.Woodcutter, trees []interface{}) {
+func processWoodcutterLogic(ctx context.Context, aiClient *offline_ai.Client, woodcutter *entity.Woodcutter, trees []interface{}) {
 	// 循环处理樵夫生命周期
 	ticker := time.NewTicker(2 * time.Second) // 每2秒进行一次决策
 	defer ticker.Stop()

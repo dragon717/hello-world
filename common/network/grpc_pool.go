@@ -1,4 +1,4 @@
-package grpcpool
+package network
 
 import (
 	"errors"
@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 )
 
-// Pool represents a pool of gRPC connections
-type Pool struct {
+// GrpcPool represents a pool of gRPC connections
+type GrpcPool struct {
 	mu          sync.Mutex
 	connections []*grpc.ClientConn
 	target      string
@@ -17,9 +17,9 @@ type Pool struct {
 	currentSize int
 }
 
-// NewPool creates a new connection pool
-func NewPool(target string, maxSize int) *Pool {
-	return &Pool{
+// NewGrpcPool creates a new connection pool
+func NewGrpcPool(target string, maxSize int) *GrpcPool {
+	return &GrpcPool{
 		connections: make([]*grpc.ClientConn, 0, maxSize),
 		target:      target,
 		maxSize:     maxSize,
@@ -27,7 +27,7 @@ func NewPool(target string, maxSize int) *Pool {
 }
 
 // Get retrieves a connection from the pool
-func (p *Pool) Get() (*grpc.ClientConn, error) {
+func (p *GrpcPool) Get() (*grpc.ClientConn, error) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 
@@ -57,7 +57,7 @@ func (p *Pool) Get() (*grpc.ClientConn, error) {
 }
 
 // Put returns a connection to the pool
-func (p *Pool) Put(conn *grpc.ClientConn) {
+func (p *GrpcPool) Put(conn *grpc.ClientConn) {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 
@@ -65,7 +65,7 @@ func (p *Pool) Put(conn *grpc.ClientConn) {
 }
 
 // Close closes all connections in the pool
-func (p *Pool) Close() {
+func (p *GrpcPool) Close() {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 

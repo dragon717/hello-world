@@ -5,7 +5,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/hello-world/proto/ai"
+	ai "github.com/hello-world/common/protocol"
 	"google.golang.org/grpc"
 )
 
@@ -81,19 +81,7 @@ func (s *AIService) GetDecision(ctx context.Context, req *ai.DecisionRequest) (*
 	case contains(response, "search", "tree"):
 		actionType = "SEARCH"
 		subCommands = []string{"scan_surroundings"}
-	case contains(response, "move", "walk"):
-		actionType = "MOVE"
-		if nearestTree := findNearestTree(req.MapInfo.Entities); nearestTree != nil {
-			targetId = nearestTree.Id
-			targetPosition = nearestTree.Position
-			subCommands = []string{"move_to_target"}
-		}
-	case contains(response, "chop", "cut"):
-		actionType = "CHOP"
-		if nearestTree := findNearestTree(req.MapInfo.Entities); nearestTree != nil {
-			targetId = nearestTree.Id
-			subCommands = []string{"use_woodcutting_skill"}
-		}
+
 	default:
 		actionType = "IDLE"
 		subCommands = []string{"wait"}
@@ -123,16 +111,4 @@ func contains(s string, substrs ...string) bool {
 		}
 	}
 	return false
-}
-
-func findNearestTree(entities []*ai.EntityInfo) *ai.EntityInfo {
-	var nearestTree *ai.EntityInfo
-	for _, entity := range entities {
-		if entity.Type == "TREE" {
-			if nearestTree == nil {
-				nearestTree = entity
-			}
-		}
-	}
-	return nearestTree
 }

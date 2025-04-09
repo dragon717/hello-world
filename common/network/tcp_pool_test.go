@@ -108,7 +108,7 @@ func TestTCPPool_GetPut(t *testing.T) {
 	conn2, _ := pool.Get()
 	conn3, _ := pool.Get()
 
-	// Pool is now empty
+	// GrpcPool is now empty
 	pool.Put(conn2)
 	pool.Put(conn3)
 }

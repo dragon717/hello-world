@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package ai;
 
-option go_package = "github.com/hello-world/proto/ai";
+option go_package = "github.com/hello-world/ai-mcp-server/proto/ai";
 
 // 实体位置信息
 message Position {

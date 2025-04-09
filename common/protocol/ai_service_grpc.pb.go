@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v6.30.2
-// source: proto/ai_service.proto
+// source: ai_service.proto
 
 package ai
 
@@ -35,7 +35,7 @@ func NewAIServiceClient(cc grpc.ClientConnInterface) AIServiceClient {
 
 func (c *aIServiceClient) GetDecision(ctx context.Context, in *DecisionRequest, opts ...grpc.CallOption) (*DecisionResponse, error) {
 	out := new(DecisionResponse)
-	err := c.cc.Invoke(ctx, "/offline_ai.AIService/GetDecision", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/ai.AIService/GetDecision", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _AIService_GetDecision_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/offline_ai.AIService/GetDecision",
+		FullMethod: "/ai.AIService/GetDecision",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AIServiceServer).GetDecision(ctx, req.(*DecisionRequest))
@@ -92,7 +92,7 @@ func _AIService_GetDecision_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var AIService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "offline_ai.AIService",
+	ServiceName: "ai.AIService",
 	HandlerType: (*AIServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -101,5 +101,5 @@ var AIService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/ai_service.proto",
+	Metadata: "ai_service.proto",
 }

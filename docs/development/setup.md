@@ -29,7 +29,7 @@ project/
 git clone [项目地址]
 
 # 进入项目目录
-cd ai-mcp-server
+cd offline_ai-mcp-server
 
 # 安装依赖
 go mod download

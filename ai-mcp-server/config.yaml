@@ -2,7 +2,7 @@
 
 # Gemini API Configuration
 gemini:
-  api_key: ""  # Replace with your actual Gemini API key
+  api_key: ${GEMINI_API_KEY}   # Replace with your actual Gemini API key
   model: "gemini-2.0-flash"           # Default model to use
   max_tokens: 2048             # Maximum tokens per response
 

@@ -1,23 +1,24 @@
-package ai
+package offline_ai
 
 import (
 	"context"
 	"log"
 	"time"
 
-	"github.com/hello-world/common/proto/ai"
+	"github.com/bugod/ai-mcp-server/proto/ai"
+	"github.com/hello-world/common/network"
 	"github.com/hello-world/logic-server/entity"
 )
 
 // Client represents an AI service client
 type Client struct {
-	grpcPool *grpcpool.GrpcPool
+	grpcPool *network.GrpcPool
 }
 
 // NewClient creates a new AI service client
 func NewClient(target string, poolSize int) *Client {
 	return &Client{
-		grpcPool: grpcpool.NewPool(target, poolSize),
+		grpcPool: network.NewGrpcPool(target, poolSize),
 	}
 }
 
