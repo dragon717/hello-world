@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
+<root>
+    <data key="entity_type_person" content="1" ty="uint32" description="人类" />
+    <data key="entity_type_tree" content="2" ty="uint32" description="树" />
+
+
+    <data key="tool_type_axe" content="1001" ty="uint32" description="斧头" />
+
+    <data key="item_type_wood" content="10001" ty="uint32" description="木头" />
+</root>

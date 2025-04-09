@@ -1,0 +1,105 @@
+package data_config
+// 该文件为工具生成 不要修改
+import (
+	"Test/common"
+	"strings"
+	"fmt"
+    "strconv"
+)
+
+var _ = strings.Split("1|2|3", "|")
+var _, _ = strconv.Atoi("1")
+
+type {{.Name}}List struct {
+	Key     string `xml:"key,attr"`
+	Content string `xml:"content,attr"`
+	Type    string
+}
+
+type {{.Name}}Config struct {
+	PList      []*{{.Name}}List `xml:"data"`
+}
+
+type Xml{{.Name}}Config struct {
+	{{range $i, $List := .PList}} m_{{$List.ValName}} {{$List.Type}} {{ "\n" }} {{end}}
+}
+
+func (this *Xml{{$.Name}}Config)LoadConfig() bool {
+    if err := this.LoadXml{{$.Name}}Config();err != nil {
+    	return false
+    }
+    return true
+}
+
+func  (data_sheet *Xml{{$.Name}}Config)LoadXml{{$.Name}}Config(path ...string) error{
+	var filename string
+	if len(path) == 0 {
+		filename = DataConfigDir + "{{$.OriginName}}.xml"
+	} else {
+		filename = path[0]
+	}
+
+	var pListData = &{{.Name}}Config{
+    	PList:      make([]*{{.Name}}List, 0),
+    }
+    err := common.LoadConfig(filename, &pListData)
+    if err != nil {
+    	return err
+    }
+
+    var dataMap = make(map[string]*{{.Name}}List)
+    for _,val := range pListData.PList {
+    	dataMap[val.Key] = val
+    }
+
+    {{range $i, $List := .PList}}
+    {
+    var dataValStruct,exist = dataMap["{{$List.Key}}"]
+    if !exist {
+        return fmt.Errorf("m_{{$List.ValName}} Not Exist")
+    }
+    var dataVal = dataValStruct.Content
+    {{if eq $List.Type "string"}}
+        data_sheet.m_{{$List.ValName}} = dataVal
+    {{end}}
+    {{if eq $List.Type "uint32"}}
+        intVal, err  :=  strconv.ParseInt(dataVal, 10, 64)
+        if err != nil {
+            return err
+        }
+        data_sheet.m_{{$List.ValName}} = uint32(intVal)
+    {{end}}
+    {{if eq $List.Type "[]string"}}
+        splitList := strings.Split(dataVal, "|")
+        data_sheet.m_{{$List.ValName}} = splitList
+    {{end}}
+    {{if eq $List.Type "[]uint32"}}
+        splitList := strings.Split(dataVal, "|")
+        uint32list := make([]uint32,len(splitList))
+        for i,str := range splitList {
+            intstr,err := strconv.ParseInt(str, 10, 64)
+            if err != nil {
+                return err
+            }
+            uint32list[i] = uint32(intstr)
+        }
+        data_sheet.m_{{$List.ValName}} = uint32list
+    {{end}}
+    }
+    {{end}}
+
+	return nil
+}
+
+
+func GetXml{{.Name}}Config() *Xml{{.Name}}Config {
+	return &Xml{{.Name}}Config{}
+}
+
+{{range $i, $List := .PList}}
+// {{$List.Description}}
+func (this *Xml{{$.Name}}Config)Get{{$List.ValName}}() {{$List.Type}} {
+    return this.m_{{$List.ValName}}
+}
+
+{{end}}

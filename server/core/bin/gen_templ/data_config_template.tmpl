@@ -1,0 +1,49 @@
+// 该文件为工具生成 不要修改
+package data_config
+
+import (
+	"Test/common"
+	"unsafe"
+)
+
+func GetXml{{.Name}}() *Xml{{.Name}} {
+	data_sheet, err := LoadXml{{.Name}}()
+	if err != nil {
+		return nil
+	}
+	return data_sheet
+}
+
+type Xml{{.Name}} struct {
+	Datas []*{{$.Name}}
+}
+
+func GetXml{{$.Name}}Name() string {
+    return DataConfigDir + "{{.OriginName}}.xml"
+}
+func LoadXml{{$.Name}}() (*Xml{{.Name}}, error){
+    return LoadXml{{$.Name}}ByFileName(DataConfigDir  + "{{.OriginName}}.xml")
+}
+
+func LoadXml{{$.Name}}ByFileName(filename string) (*Xml{{.Name}}, error){
+	data_sheet := &struct {
+		Datas []*struct {
+			{{range $i, $fn := .FieldsName}}	{{$fn}} {{index $.FieldsType $i}} `xml:"{{index $.FieldsTag $i}},attr"`
+			{{end}}} `xml:"data"`
+	}{}
+
+	if err := common.LoadConfig(filename, data_sheet); err != nil {
+		return nil, err
+	}
+	return (*Xml{{.Name}})(unsafe.Pointer(data_sheet)), nil
+}
+
+type {{.Name}} struct {
+{{range $i, $fn := .FieldsName}}	{{$fn}} {{index $.FieldsType $i}} // {{index $.FieldsNote $i}}
+{{end}}}
+
+{{range $i, $fn := .FieldsName}}
+func (this *{{$.Name}}) Get{{$fn}}() {{index $.FieldsType $i}} {
+	return this.{{$fn}}
+}
+{{end}}

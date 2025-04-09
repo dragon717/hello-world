@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
+<root>
+    <data key="action_type_move" content="100000" ty="uint32" description="移动" />
+    <data key="action_type_Cutting_down_trees" content="100001" ty="uint32" description="砍树" />
+    <data key="action_type_break_first" content="100002" ty="uint32" description="吃早餐" />
+    <data key="action_type_lunch" content="100003" ty="uint32" description="吃午饭" />
+    <data key="action_dinner" content="100004" ty="uint32" description="吃晚饭" />
+    <data key="action_sleep" content="100005" ty="uint32" description="睡觉" />
+    <data key="action_grow" content="100006" ty="uint32" description="生长" />
+
+    <data key="action_born" content="1" ty="uint32" description="出生" />
+
+</root>
