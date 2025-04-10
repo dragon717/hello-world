@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
+<root>
+    <data key="entity_person" content="101" ty="uint32" description="人类" />
+    <data key="entity_tree" content="201" ty="uint32" description="树" />
+    <data key="entity_stone" content="202" ty="uint32" description="巨石" />
+</root>

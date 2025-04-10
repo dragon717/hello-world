@@ -16,12 +16,12 @@ func NewUser(name string, npcId int32, age uint32, x, y int) *EntityUser {
 	e := &EntityUser{
 		Tool:   make([]string, 0),
 		Money:  0,
-		Entity: NewEntity(age, name, npcId, int32(GParamCfg.GetEntityTypePerson()), 100, x, y),
+		Entity: NewEntity(age, name, npcId, int32(EntityParamCfg.GetEntityPerson()), 100, x, y),
 	}
 
 	e.AddActionLog(&ActionLog{
 		ActionType: ActionParamCfg.ActionBorn,
-		Action:     "你出生了,你的目标是尽可能在生命中做更多有意义的事情,以及活着((生命值,饱食度 > 0))",
+		Action:     "你的目标是尽可能在生命中做更多有意义的事情,以及活着((生命值,饱食度 > 0))",
 		Time:       WorldMap.Gmap.GlobalTime.GetTime(),
 	})
 

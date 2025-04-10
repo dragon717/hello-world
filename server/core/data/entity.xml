@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- name=序号=string id=参数内容=int type_id=参数类型=int description=细节描述=string -->
+<root>
+    <data name="entity_person" id="101" type_id="1" description="人类" />
+    <data name="entity_tree" id="201" type_id="2" description="树" />
+    <data name="entity_stone" id="202" type_id="2" description="巨石" />
+</root>

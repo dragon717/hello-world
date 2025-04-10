@@ -33,23 +33,16 @@ if errorlevel 1 (
 :: 执行Git操作
 echo 正在执行Git操作...
 cd /d %TARGET%
+
+git pull
+
 git add --all
-if errorlevel 1 (
-    echo 错误：git add失败
-    exit /b 1
-)
 
 git commit -m "%~1"
-if errorlevel 1 (
-    echo 错误：git commit失败
-    exit /b 1
-)
+
 
 git push
-if errorlevel 1 (
-    echo 错误：git push失败
-    exit /b 1
-)
+
 
 echo 操作成功完成！
 endlocal

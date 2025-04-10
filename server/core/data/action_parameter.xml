@@ -1,14 +1,13 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
 <root>
-    <data key="action_type_move" content="100000" ty="uint32" description="移动" />
-    <data key="action_type_Cutting_down_trees" content="100001" ty="uint32" description="砍树" />
-    <data key="action_type_break_first" content="100002" ty="uint32" description="吃早餐" />
-    <data key="action_type_lunch" content="100003" ty="uint32" description="吃午饭" />
-    <data key="action_dinner" content="100004" ty="uint32" description="吃晚饭" />
-    <data key="action_sleep" content="100005" ty="uint32" description="睡觉" />
-    <data key="action_grow" content="100006" ty="uint32" description="生长" />
-
-    <data key="action_born" content="1" ty="uint32" description="出生" />
+    <data key="action_born" content="100000" ty="uint32" description="出生"  />
+    <data key="action_type_move" content="100001" ty="uint32" description="移动"  />
+    <data key="action_type_break_first" content="100002" ty="uint32" description="吃早餐(回复饱食度,需要食物)"    />
+    <data key="action_type_lunch" content="100003" ty="uint32" description="吃午饭(回复饱食度,需要食物)"  />
+    <data key="action_dinner" content="100004" ty="uint32" description="吃晚饭(回复饱食度,需要食物)"  />
+    <data key="action_sleep" content="100005" ty="uint32" description="睡觉(回复生命值,减少饱食度)"  />
+    <data key="action_type_Cutting_down_trees" content="100006" ty="uint32" description="砍树(获得木头,需要伐木斧)"  />
+    <data key="action_type_grow" content="100007"  ty="uint32" description="生长(增加寿命和生命值)"  />
 
 </root>

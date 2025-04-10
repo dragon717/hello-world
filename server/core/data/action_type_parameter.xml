@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
+<root>
+    <data key="action_type_initiative" content="1" ty="uint32" description="主动" />
+    <data key="entity_type_passive" content="2" ty="uint32" description="被动" />
+    <data key="entity_type_mutual" content="3" ty="uint32" description="共有" />
+</root>
