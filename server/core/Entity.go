@@ -83,7 +83,6 @@ func NewEntity(age uint32, name string, id, ty, hp int32, x, y int) *Entity {
 		ActionChan:    make(chan *ActionMsg, 1),
 		ActionList:    make(map[uint32]func(*ActionMsg, EntityInterface)),
 	}
-	WorldMap.Gmap.SetLocation(x, y, e)
 
 	go e.ConsumerChan()
 	return e

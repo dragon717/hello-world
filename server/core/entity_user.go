@@ -19,9 +19,6 @@ func NewUser(name string, npcId int32, age uint32, x, y int) *EntityUser {
 		Entity: NewEntity(age, name, npcId, int32(GParamCfg.GetEntityTypePerson()), 100, x, y),
 	}
 
-	WorldMap.GEntityList[uint32(npcId)] = e
-	WorldMap.GEntityTypeList[uint32(npcId)] = GParamCfg.GetEntityTypePerson()
-
 	e.AddActionLog(&ActionLog{
 		ActionType: ActionParamCfg.ActionBorn,
 		Action:     "你出生了,你的目标是尽可能在生命中做更多有意义的事情,以及活着((生命值,饱食度 > 0))",

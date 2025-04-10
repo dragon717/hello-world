@@ -19,6 +19,7 @@ func LoadConfig(filename string, v interface{}) error {
 		return nil
 	}
 }
+
 func JsonMarshal(s interface{}) string {
 	marshal, err := json.Marshal(s)
 	if err != nil {

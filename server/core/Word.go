@@ -17,3 +17,8 @@ func NewWorld() *World {
 		Gpool:           NewPool(100),
 	}
 }
+func (w *World) AddEntity(entity EntityInterface) {
+	w.GEntityList[uint32(entity.GetId())] = entity
+	w.GEntityTypeList[uint32(entity.GetId())] = uint32(entity.GetType())
+	w.Gmap.SetLocation(int(entity.GetX()), int(entity.GetY()), entity)
+}
