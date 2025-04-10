@@ -22,14 +22,14 @@ type ActionParameterConfig struct {
 }
 
 type XmlActionParameterConfig struct {
+	ActionBorn                 uint32
 	ActionTypeMove             uint32
-	ActionTypeCuttingDownTrees uint32
 	ActionTypeBreakFirst       uint32
 	ActionTypeLunch            uint32
 	ActionDinner               uint32
 	ActionSleep                uint32
-	ActionGrow                 uint32
-	ActionBorn                 uint32
+	ActionTypeCuttingDownTrees uint32
+	ActionTypeGrow             uint32
 }
 
 func (this *XmlActionParameterConfig) LoadConfig() bool {
@@ -61,6 +61,21 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 	}
 
 	{
+		var dataValStruct, exist = dataMap["action_born"]
+		if !exist {
+			return fmt.Errorf("ActionBorn Not Exist")
+		}
+		var dataVal = dataValStruct.Content
+
+		intVal, err := strconv.ParseInt(dataVal, 10, 64)
+		if err != nil {
+			return err
+		}
+		data_sheet.ActionBorn = uint32(intVal)
+
+	}
+
+	{
 		var dataValStruct, exist = dataMap["action_type_move"]
 		if !exist {
 			return fmt.Errorf("ActionTypeMove Not Exist")
@@ -72,21 +87,6 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 			return err
 		}
 		data_sheet.ActionTypeMove = uint32(intVal)
-
-	}
-
-	{
-		var dataValStruct, exist = dataMap["action_type_Cutting_down_trees"]
-		if !exist {
-			return fmt.Errorf("ActionTypeCuttingDownTrees Not Exist")
-		}
-		var dataVal = dataValStruct.Content
-
-		intVal, err := strconv.ParseInt(dataVal, 10, 64)
-		if err != nil {
-			return err
-		}
-		data_sheet.ActionTypeCuttingDownTrees = uint32(intVal)
 
 	}
 
@@ -151,9 +151,9 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 	}
 
 	{
-		var dataValStruct, exist = dataMap["action_grow"]
+		var dataValStruct, exist = dataMap["action_type_Cutting_down_trees"]
 		if !exist {
-			return fmt.Errorf("ActionGrow Not Exist")
+			return fmt.Errorf("ActionTypeCuttingDownTrees Not Exist")
 		}
 		var dataVal = dataValStruct.Content
 
@@ -161,14 +161,14 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 		if err != nil {
 			return err
 		}
-		data_sheet.ActionGrow = uint32(intVal)
+		data_sheet.ActionTypeCuttingDownTrees = uint32(intVal)
 
 	}
 
 	{
-		var dataValStruct, exist = dataMap["action_born"]
+		var dataValStruct, exist = dataMap["action_type_grow"]
 		if !exist {
-			return fmt.Errorf("ActionBorn Not Exist")
+			return fmt.Errorf("ActionTypeGrow Not Exist")
 		}
 		var dataVal = dataValStruct.Content
 
@@ -176,7 +176,7 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 		if err != nil {
 			return err
 		}
-		data_sheet.ActionBorn = uint32(intVal)
+		data_sheet.ActionTypeGrow = uint32(intVal)
 
 	}
 
@@ -187,42 +187,42 @@ func GetXmlActionParameterConfig() *XmlActionParameterConfig {
 	return &XmlActionParameterConfig{}
 }
 
+// 出生
+func (this *XmlActionParameterConfig) GetActionBorn() uint32 {
+	return this.ActionBorn
+}
+
 // 移动
 func (this *XmlActionParameterConfig) GetActionTypeMove() uint32 {
 	return this.ActionTypeMove
 }
 
-// 砍树
-func (this *XmlActionParameterConfig) GetActionTypeCuttingDownTrees() uint32 {
-	return this.ActionTypeCuttingDownTrees
-}
-
-// 吃早餐
+// 吃早餐(回复饱食度,需要食物)
 func (this *XmlActionParameterConfig) GetActionTypeBreakFirst() uint32 {
 	return this.ActionTypeBreakFirst
 }
 
-// 吃午饭
+// 吃午饭(回复饱食度,需要食物)
 func (this *XmlActionParameterConfig) GetActionTypeLunch() uint32 {
 	return this.ActionTypeLunch
 }
 
-// 吃晚饭
+// 吃晚饭(回复饱食度,需要食物)
 func (this *XmlActionParameterConfig) GetActionDinner() uint32 {
 	return this.ActionDinner
 }
 
-// 睡觉
+// 睡觉(回复生命值,减少饱食度)
 func (this *XmlActionParameterConfig) GetActionSleep() uint32 {
 	return this.ActionSleep
 }
 
-// 生长
-func (this *XmlActionParameterConfig) GetActionGrow() uint32 {
-	return this.ActionGrow
+// 砍树(获得木头,需要伐木斧)
+func (this *XmlActionParameterConfig) GetActionTypeCuttingDownTrees() uint32 {
+	return this.ActionTypeCuttingDownTrees
 }
 
-// 出生
-func (this *XmlActionParameterConfig) GetActionBorn() uint32 {
-	return this.ActionBorn
+// 生长(增加寿命和生命值)
+func (this *XmlActionParameterConfig) GetActionTypeGrow() uint32 {
+	return this.ActionTypeGrow
 }

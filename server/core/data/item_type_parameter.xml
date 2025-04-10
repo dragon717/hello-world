@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- name=序号=string content=参数内容=string ty=参数类型=int  description=细节描述=string -->
+<root>
+    <data key="item_type_tool" content="1000"  ty="uint32" description="工具" />
+    <data key="item_type_food" content="2000"  ty="uint32"  description="食物" />
+    <data key="item_type_toy" content="3000"  ty="uint32"  description="玩具" />
+    <data key="item_type_material" content="4000"  ty="uint32"  description="材料" />
+
+</root>

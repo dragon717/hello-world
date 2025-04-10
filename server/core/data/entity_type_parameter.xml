@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=string description=细节描述=string -->
+<root>
+    <data key="entity_type_animal" content="1" ty="uint32" description="动物" />
+    <data key="entity_type_plant" content="2" ty="uint32" description="植物" />
+    <data key="entity_type_building" content="3" ty="uint32" description="建筑" />
+    <data key="entity_type_environment" content="4" ty="uint32" description="环境" />
+</root>

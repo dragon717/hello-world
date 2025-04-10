@@ -11,10 +11,10 @@ type EntityTree struct {
 // new one user
 func NewEntityTree(name string, treeId int32, age uint32, x, y int) *EntityTree {
 	e := &EntityTree{
-		Entity: NewEntity(age, name, treeId, int32(GParamCfg.GetEntityTypeTree()), int32(age), x, y),
+		Entity: NewEntity(age, name, treeId, int32(EntityParamCfg.GetEntityTree()), int32(age), x, y),
 	}
 	WorldMap.GEntityList[uint32(treeId)] = e
-	WorldMap.GEntityTypeList[uint32(treeId)] = GParamCfg.GetEntityTypeTree()
+	WorldMap.GEntityTypeList[uint32(treeId)] = EntityParamCfg.GetEntityTree()
 
 	e.RegisterAction()
 	go e.LifeProcess()
@@ -37,7 +37,7 @@ func (u *EntityTree) LifeProcess() {
 			u.Age++
 			u.HP++
 			u.AddActionLog(&ActionLog{
-				ActionType: ActionParamCfg.GetActionGrow(),
+				ActionType: ActionParamCfg.GetActionTypeGrow(),
 				Action:     "生长",
 				Time:       WorldMap.Gmap.GlobalTime.GetTime(),
 				Result:     "Age+1,HP+1",

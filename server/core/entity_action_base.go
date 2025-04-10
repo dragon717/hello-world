@@ -36,7 +36,7 @@ func BeActionCuttingDownTrees(op *ActionMsg, u EntityInterface) {
 	c.SendCallBackChan(&ResultMsg{
 		ActionID:  log.ID,
 		Result:    "砍伐成功!获得木材",
-		AwardList: map[uint32]uint32{GParamCfg.GetItemTypeWood(): uint32(rand.Intn(2) + 1)},
+		AwardList: map[uint32]uint32{ItemParamCfg.GetItemWood(): uint32(rand.Intn(2) + 1)},
 	})
 }
 func ActionEatDinner(op *ActionMsg, u EntityInterface) {

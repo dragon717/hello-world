@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- key=序号=string content=参数内容=string ty=参数类型=int  description=细节描述=string -->
+<root>
+    <data key="item_FellingAxe" content="10001" ty="uint32" description="伐木斧(采集工具)"  />
+    <data key="item_Pickaxe" content="10001" ty="uint32" description="采石镐(采集工具)" />
+    <data key="item_berry" content="20001" ty="uint32"  description="浆果(回复饱食度)" />
+    <data key="item_wood" content="40001" ty="uint32" description="木头(建筑材料)"/>
+    <data key="item_branch" content="40002" ty="uint32" description="树枝(工具材料)"  />
+    <data key="item_pebble" content="40003" ty="uint32" description="鹅卵石(工具材料)"   />
+</root>

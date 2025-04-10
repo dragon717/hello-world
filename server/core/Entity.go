@@ -31,14 +31,14 @@ type EntityInterface interface {
 	SetBagItem(itemId uint32, num uint32)
 	AddBagItem(itemId uint32, num uint32)
 
-	GetInfo() map[string]string
+	GetInfo() map[string]string //用于agent的数据
 
 	RegisterAction()
 
-	AddActionLog(log *ActionLog) *ActionLog
-	SendActionChan(op *ActionMsg)
-	SendCallBackChan(op *ResultMsg)
-	Register(uint32, func(*ActionMsg, EntityInterface))
+	AddActionLog(log *ActionLog) *ActionLog             //添加记忆
+	SendActionChan(op *ActionMsg)                       //将消息发送给entity消费
+	SendCallBackChan(op *ResultMsg)                     //消息回调
+	Register(uint32, func(*ActionMsg, EntityInterface)) // 注册action
 }
 
 type Entity struct {
@@ -49,13 +49,13 @@ type Entity struct {
 	Age           uint32
 	X             uint32
 	Y             uint32
-	SatietyDegree uint32 //饱食度
-	Bag           map[uint32]uint32
-	Status        bool //是否可交互
-	actionLog     []*ActionLog
-	ResultChan    chan *ResultMsg //接收更新记忆的消息
-	ActionChan    chan *ActionMsg //接收model消息
-	ActionList    map[uint32]func(*ActionMsg, EntityInterface)
+	SatietyDegree uint32                                       //饱食度
+	Bag           map[uint32]uint32                            //背包
+	Status        bool                                         //是否可交互
+	actionLog     []*ActionLog                                 //记忆
+	ResultChan    chan *ResultMsg                              //接收更新记忆的消息
+	ActionChan    chan *ActionMsg                              //接收model消息
+	ActionList    map[uint32]func(*ActionMsg, EntityInterface) //可执行(被执行)得action列表
 }
 
 type ActionLog struct {
