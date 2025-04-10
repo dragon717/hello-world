@@ -2,6 +2,7 @@ package main
 
 type Block struct {
 	EntityList []EntityInterface
+	ItemList   []*Item
 }
 
 func NewBlock() *Block {

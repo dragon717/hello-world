@@ -57,8 +57,8 @@ func ActionEatDinner(op *ActionMsg, u EntityInterface) {
 }
 func ActionSleep(op *ActionMsg, u EntityInterface) {
 	var Result string
-	r := rand.Intn(10) + 10
-	if int(u.GetSatietyDegree())-r <= 30 {
+	r := rand.Intn(5) + 5
+	if int(u.GetSatietyDegree())-r <= 0 {
 		u.SetSatietyDegree(1)
 	} else {
 		u.SetSatietyDegree(u.GetSatietyDegree() - uint32(r))

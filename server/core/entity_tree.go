@@ -9,9 +9,9 @@ type EntityTree struct {
 }
 
 // new one user
-func NewEntityTree(name string, treeId int32, age uint32) *EntityTree {
+func NewEntityTree(name string, treeId int32, age uint32, x, y int) *EntityTree {
 	e := &EntityTree{
-		Entity: NewEntity(age, name, treeId, int32(GParamCfg.GetEntityTypeTree()), int32(age)),
+		Entity: NewEntity(age, name, treeId, int32(GParamCfg.GetEntityTypeTree()), int32(age), x, y),
 	}
 	WorldMap.GEntityList[uint32(treeId)] = e
 	WorldMap.GEntityTypeList[uint32(treeId)] = GParamCfg.GetEntityTypeTree()

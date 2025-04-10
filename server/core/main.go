@@ -2,9 +2,7 @@ package main
 
 import (
 	"Test/data_config"
-	"fmt"
 	"math/rand"
-	"time"
 )
 
 var GParamCfg *data_config.XmlParameterConfig
@@ -13,7 +11,7 @@ var ActionParamCfg *data_config.XmlActionParameterConfig
 var WorldMap *World
 
 func main() {
-	initmodel()
+	initModelPool(16)
 	GParamCfg = data_config.GetXmlParameterConfig()
 	GParamCfg.LoadConfig()
 
@@ -22,18 +20,12 @@ func main() {
 
 	WorldMap = NewWorld()
 
-	npc1 := NewUser("小明", int32(rand.Intn(10000)), 18)
-	tree1 := NewEntityTree("树1", int32(rand.Intn(10000)), 99)
-
-	WorldMap.Gmap.SetLocation(1, 1, npc1)
-	WorldMap.Gmap.SetLocation(1, 2, tree1)
+	NewUser("小明", int32(rand.Intn(10000)), 18, 1, 1)
+	NewUser("小红", int32(rand.Intn(10000)), 18, 4, 1)
+	NewUser("小蓝", int32(rand.Intn(10000)), 18, 1, 4)
+	NewEntityTree("树1", int32(rand.Intn(10000)), 99, 1, 2)
 
 	WorldMap.Gmap.Show()
-	for {
-		res := sendmsg(npc1, &ActionMsg{})
-		fmt.Println(res)
-		//WorldMap.Gmap.Show()
-		time.Sleep(3 * time.Second)
-	}
+	select {}
 
 }

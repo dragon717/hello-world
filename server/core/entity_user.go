@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"math/rand"
 	"time"
 )
 
@@ -10,11 +12,11 @@ type EntityUser struct {
 	*Entity
 }
 
-func NewUser(name string, npcId int32, age uint32) *EntityUser {
+func NewUser(name string, npcId int32, age uint32, x, y int) *EntityUser {
 	e := &EntityUser{
 		Tool:   make([]string, 0),
 		Money:  0,
-		Entity: NewEntity(age, name, npcId, int32(GParamCfg.GetEntityTypePerson()), 100),
+		Entity: NewEntity(age, name, npcId, int32(GParamCfg.GetEntityTypePerson()), 100, x, y),
 	}
 
 	WorldMap.GEntityList[uint32(npcId)] = e
@@ -46,16 +48,27 @@ func (u *EntityUser) RegisterAction() {
 
 func (u *EntityUser) LifeProcess() {
 	ticker := time.NewTicker(1 * time.Second)
-	tickerten := time.NewTicker(10 * time.Second)
+	tickerTen := time.NewTicker(10 * time.Second)
+	tickerThree := time.NewTicker(3 * ACTION_RATE * time.Second)
 	for {
 		select {
 		case <-ticker.C:
 			u.SatietyDegree -= 1
+			if u.SatietyDegree <= 1 {
+				u.HP -= 1
+			}
 			if u.HP <= 0 {
 				WorldMap.Gmap.DeadChan <- u
 				return
 			}
-		case <-tickerten.C:
+		case <-tickerThree.C:
+			res := sendmsg(u)
+			fmt.Println(res)
+		case <-tickerTen.C:
+			if u.Age > uint32(80+rand.Intn(10)) {
+				WorldMap.Gmap.DeadChan <- u
+				return
+			}
 			u.Age++
 			u.HP++
 		}

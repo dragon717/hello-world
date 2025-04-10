@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"time"
 )
@@ -90,4 +91,26 @@ func (m *Wmap) TimeProcess() {
 			m.GlobalTime.AddHour()
 		}
 	}
+}
+
+// 获取周围信息
+func (m *Wmap) GetAroundInfo(x, y int, size int) string {
+	var infoMap map[string]string
+	infoMap = make(map[string]string)
+	for i := x - size; i <= x+size; i++ {
+		for j := y - size; j <= y+size; j++ {
+			if i < 0 || j < 0 || i >= int(m.Size) || j >= int(m.Size) {
+				continue
+			}
+			if m.Map[i][j] == nil {
+				continue
+			}
+			for _, entityInterface := range m.Map[i][j].EntityList {
+				ejson, _ := json.Marshal(entityInterface.GetInfo())
+				infoMap[entityInterface.GetName()] = string(ejson)
+			}
+		}
+	}
+	info := fmt.Sprintf("%+v", infoMap)
+	return string(info)
 }

@@ -16,6 +16,7 @@ type EntityInterface interface {
 	GetActionLog() []*ActionLog
 	GetAge() uint32
 	GetSatietyDegree() uint32
+	GetBag() map[uint32]uint32
 
 	SetX(x uint32)
 	SetY(y uint32)
@@ -26,6 +27,11 @@ type EntityInterface interface {
 	SetType(ty int32)
 	SetAge(age uint32)
 	SetSatietyDegree(satietyDegree uint32)
+
+	SetBagItem(itemId uint32, num uint32)
+	AddBagItem(itemId uint32, num uint32)
+
+	GetInfo() map[string]string
 
 	RegisterAction()
 
@@ -60,12 +66,14 @@ type ActionLog struct {
 	Result     string
 }
 
-func NewEntity(age uint32, name string, id, ty, hp int32) *Entity {
+func NewEntity(age uint32, name string, id, ty, hp int32, x, y int) *Entity {
 	e := &Entity{
 		Id:            id,
 		Name:          name,
 		Type:          ty,
 		HP:            hp,
+		X:             uint32(x),
+		Y:             uint32(y),
 		Age:           age,
 		Bag:           make(map[uint32]uint32),
 		SatietyDegree: 100,
@@ -75,6 +83,8 @@ func NewEntity(age uint32, name string, id, ty, hp int32) *Entity {
 		ActionChan:    make(chan *ActionMsg, 1),
 		ActionList:    make(map[uint32]func(*ActionMsg, EntityInterface)),
 	}
+	WorldMap.Gmap.SetLocation(x, y, e)
+
 	go e.ConsumerChan()
 	return e
 }
@@ -118,6 +128,15 @@ func (e *Entity) GetActionLog() []*ActionLog {
 }
 func (e *Entity) GetSatietyDegree() uint32 {
 	return e.SatietyDegree
+}
+func (e *Entity) SetBagItem(itemId uint32, num uint32) {
+	e.Bag[itemId] = num
+}
+func (e *Entity) AddBagItem(itemId uint32, num uint32) {
+	e.Bag[itemId] += num
+}
+func (e *Entity) GetBag() map[uint32]uint32 {
+	return e.Bag
 }
 func (e *Entity) SetStatus(status bool) {
 	e.Status = status
@@ -184,4 +203,19 @@ func (e *Entity) ConsumerChan() {
 }
 
 func (e *Entity) RegisterAction() {
+}
+
+func (e *Entity) GetInfo() map[string]string {
+	return map[string]string{
+		"id":            fmt.Sprintf("%d", e.Id),
+		"name":          e.Name,
+		"type":          fmt.Sprintf("%d", e.Type),
+		"hp":            fmt.Sprintf("%d", e.HP),
+		"age":           fmt.Sprintf("%d", e.Age),
+		"x":             fmt.Sprintf("%d", e.X),
+		"y":             fmt.Sprintf("%d", e.Y),
+		"satietydegree": fmt.Sprintf("%d", e.SatietyDegree),
+		"status":        fmt.Sprintf("%t", e.Status),
+		"bag":           fmt.Sprintf("%v", e.Bag),
+	}
 }
