@@ -86,7 +86,7 @@ func (m *Wmap) TimeProcess() {
 			})
 			delete(WorldMap.GEntityList, uint32(entity.GetId()))
 			delete(WorldMap.GEntityTypeList, uint32(entity.GetId()))
-			fmt.Println(entity, " dead")
+			fmt.Printf("%+v  is dead!", entity)
 		case <-ticker.C:
 			m.GlobalTime.AddHour()
 		}

@@ -9,6 +9,7 @@ import (
 // cfg:具体数据
 // ParamCfg :函数式获取ID(避免静态变量)
 // TypeParamCfg:数据类型
+var ACTION_RATE time.Duration = 2 //api请求速率 单位秒
 
 var ActionCfg = info.LoadActionCfg()
 var ActionParamCfg *data_config.XmlActionParameterConfig
@@ -21,8 +22,6 @@ var EntityTypeParamCfg *data_config.XmlEntityTypeParameterConfig
 var ItemCfg = info.LoadItemCfg()
 var ItemParamCfg *data_config.XmlItemParameterConfig
 var ItemtypeParamCfg *data_config.XmlItemTypeParameterConfig
-
-var ACTION_RATE time.Duration = 2 //api请求速率
 
 func InitCfg() {
 
