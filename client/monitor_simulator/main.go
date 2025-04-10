@@ -6,7 +6,10 @@ import (
 	"log"
 )
 
+var showMode = flag.Uint("mode", 0, "Show mode (0: Map, 1: Entities")
+
 func main() {
+	flag.Parse()
 	serverAddr := flag.String("server", "localhost:8088", "Server address to connect to")
 	flag.Parse()
 
@@ -17,4 +20,8 @@ func main() {
 
 	fmt.Println("Starting monitor...")
 	mon.Start()
+}
+
+func ShowMode() uint {
+	return *showMode
 }

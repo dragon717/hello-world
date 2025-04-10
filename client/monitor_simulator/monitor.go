@@ -13,6 +13,7 @@ import (
 type Monitor struct {
 	conn     net.Conn
 	mapData  [][]string
+	mapCache [][]string
 	entities map[string]map[string]string
 }
 
@@ -25,6 +26,7 @@ func NewMonitor(serverAddr string) (*Monitor, error) {
 	return &Monitor{
 		conn:     conn,
 		mapData:  make([][]string, 0),
+		mapCache: make([][]string, 0),
 		entities: make(map[string]map[string]string),
 	}, nil
 }
@@ -35,7 +37,7 @@ func (m *Monitor) Start() {
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
 	go m.receiveData()
-	go m.displayLoop()
+	go m.display()
 
 	<-sigChan
 	m.conn.Close()
@@ -63,16 +65,50 @@ func (m *Monitor) receiveData() {
 func (m *Monitor) processData(data map[string]interface{}) {
 	// Process map data
 	if mapData, ok := data["map"].([]interface{}); ok {
-		m.mapData = make([][]string, len(mapData))
+		// Create new map data
+		newMapData := make([][]string, len(mapData))
 		for i, row := range mapData {
 			if rowData, ok := row.([]interface{}); ok {
-				m.mapData[i] = make([]string, len(rowData))
+				newMapData[i] = make([]string, len(rowData))
 				for j, cell := range rowData {
 					if cellData, ok := cell.(string); ok {
-						m.mapData[i][j] = cellData
+						newMapData[i][j] = cellData
 					}
 				}
 			}
+		}
+
+		// Check if map has changed
+		hasChanged := false
+		if len(m.mapCache) != len(newMapData) {
+			hasChanged = true
+		} else {
+			for i := range newMapData {
+				if len(m.mapCache[i]) != len(newMapData[i]) {
+					hasChanged = true
+					break
+				}
+				for j := range newMapData[i] {
+					if m.mapCache[i][j] != newMapData[i][j] {
+						hasChanged = true
+						break
+					}
+				}
+				if hasChanged {
+					break
+				}
+			}
+		}
+
+		if hasChanged {
+			m.mapData = newMapData
+			m.mapCache = make([][]string, len(newMapData))
+			for i := range newMapData {
+				m.mapCache[i] = make([]string, len(newMapData[i]))
+				copy(m.mapCache[i], newMapData[i])
+			}
+			// Only display when map data changes
+			m.display()
 		}
 	}
 
@@ -90,25 +126,29 @@ func (m *Monitor) processData(data map[string]interface{}) {
 	}
 }
 
-func (m *Monitor) displayLoop() {
-	for {
-		// Clear screen
-		fmt.Print("\033[H\033[2J")
+func (m *Monitor) display() {
+	// Clear screen
+	fmt.Print("\033[H\033[2J")
 
-		// Display map
-		fmt.Println("=== Map ===")
-		for _, row := range m.mapData {
-			for _, cell := range row {
-				if cell == "" {
-					fmt.Print(".")
-				} else {
-					fmt.Print(cell)
+	switch ShowMode() {
+	case 0:
+		// Only display map if it has changed
+		if len(m.mapData) > 0 {
+			fmt.Println("=== Map ===")
+			for _, row := range m.mapData {
+				for _, cell := range row {
+					if cell == "" {
+						fmt.Print(".")
+					} else {
+						fmt.Print(cell)
+					}
+					fmt.Print(" ")
 				}
-				fmt.Print(" ")
+				fmt.Println()
 			}
-			fmt.Println()
 		}
 
+	case 1:
 		// Display entities
 		fmt.Println("\n=== Entities ===")
 		for id, entity := range m.entities {
@@ -118,8 +158,7 @@ func (m *Monitor) displayLoop() {
 			}
 			fmt.Println()
 		}
-
-		// Wait a bit before refreshing
-		time.Sleep(1 * time.Second)
 	}
+	// Wait a bit before refreshing
+	time.Sleep(1 * time.Second)
 }
