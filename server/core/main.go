@@ -2,6 +2,7 @@ package main
 
 import (
 	"Test/data_config"
+	"flag"
 	"math/rand"
 )
 
@@ -11,6 +12,7 @@ var ActionParamCfg *data_config.XmlActionParameterConfig
 var WorldMap *World
 
 func main() {
+	flag.Parse() // 必须调用以解析参数
 	initModelPool(16)
 	GParamCfg = data_config.GetXmlParameterConfig()
 	GParamCfg.LoadConfig()
