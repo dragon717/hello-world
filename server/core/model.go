@@ -22,12 +22,15 @@ type ModelPool struct {
 }
 
 func (m *ModelPool) Get() *genai.GenerativeModel {
-	p := m.Pool[m.Index]
-	m.Index++
-	if m.Index >= len(m.Pool) {
-		m.Index = 0
+	for i := 0; i < len(m.Pool); i++ {
+		p := m.Pool[m.Index]
+		m.Index++
+		if m.Index >= len(m.Pool) {
+			m.Index = 0
+		}
+		return p
 	}
-	return p
+	return nil
 }
 func initModelPool(size int) {
 	gctx = context.Background()
@@ -40,8 +43,8 @@ func initModelPool(size int) {
 		pool.ApiKeyList = append(pool.ApiKeyList, s)
 	}
 
-	for r := 0; r < len(pool.ApiKeyList); r++ {
-		client, err := genai.NewClient(gctx, option.WithAPIKey("AIzaSyAGt3wFGsSE0AJALtItWnd1S_QKZ5cBvwo"))
+	for _, s := range pool.ApiKeyList {
+		client, err := genai.NewClient(gctx, option.WithAPIKey(s))
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -59,9 +62,30 @@ func sendmsg(entity EntityInterface) string {
 	fmt.Println(m)
 	prompt := genai.Text(m)
 
-	resp, err := GmodelPool.Get().GenerateContent(gctx, prompt)
+	var resp *genai.GenerateContentResponse
+	var err error
+	for i := 0; i < len(GmodelPool.Pool); i++ {
+		model := GmodelPool.Get()
+		if model == nil {
+			log.Println("所有 API Key 均已达到速率限制，无法生成内容。")
+			return ""
+		}
+		resp, err = model.GenerateContent(gctx, prompt)
+		if err != nil {
+			if strings.Contains(err.Error(), "Error 429: You exceeded your current quota") {
+				log.Println("GenerateContent error:", err)
+				continue
+			} else {
+				log.Fatal("GenerateContent error:", err)
+			}
+		} else {
+			break
+		}
+	}
+
 	if err != nil {
-		log.Fatal("GenerateContent error:", err)
+		log.Println("所有 API Key 尝试均失败，无法生成内容。")
+		return ""
 	}
 
 	var rawResponse strings.Builder
