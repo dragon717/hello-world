@@ -186,6 +186,9 @@ func (e *Entity) ConsumerChan() {
 			index := slices.IndexFunc(e.actionLog, func(log *ActionLog) bool {
 				return log.ID == op.ActionID
 			})
+			if index == -1 {
+				continue
+			}
 			e.actionLog[index].Result = op.Result
 			for ty, num := range op.AwardList {
 				e.Bag[ty] += num

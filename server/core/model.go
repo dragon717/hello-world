@@ -18,7 +18,6 @@ var gctx context.Context
 type ModelPool struct {
 	ApiKeyList []string
 	Pool       []*genai.GenerativeModel
-	Size       int
 	Index      int
 }
 
@@ -33,8 +32,7 @@ func (m *ModelPool) Get() *genai.GenerativeModel {
 func initModelPool(size int) {
 	gctx = context.Background()
 	pool := &ModelPool{
-		Pool:  make([]*genai.GenerativeModel, size),
-		Size:  size,
+		Pool:  make([]*genai.GenerativeModel, 0),
 		Index: 0,
 	}
 	apikey := strings.Split(os.Getenv("APIKEY"), ";")
@@ -48,7 +46,7 @@ func initModelPool(size int) {
 			log.Fatal(err)
 		}
 		model := client.GenerativeModel("gemini-2.0-flash-001")
-		pool.Pool[r] = model
+		pool.Pool = append(pool.Pool, model)
 	}
 
 	GmodelPool = pool
