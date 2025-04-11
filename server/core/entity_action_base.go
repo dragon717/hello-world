@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"math/rand"
-	"strconv"
 )
 
 func ActionMove(op *ActionMsg, u EntityInterface) {
@@ -62,20 +61,28 @@ func BeActionCuttingDownTrees(op *ActionMsg, u EntityInterface) {
 	c.SendCallBackChan(res)
 }
 func ActionEatDinner(op *ActionMsg, u EntityInterface) {
-	r := rand.Intn(10) + 20
+	log := &ActionLog{
+		ActionType: op.Action,
+		Action:     op.Reason,
+		Time:       WorldMap.Gmap.GlobalTime.GetTime(),
+	}
+	if u.GetBag()[uint32(op.Target.Item.ItemID)] == 0 {
+		log.Result = "你的背包里没有这个食物"
+		u.AddActionLog(log)
+		return
+	}
+	num := u.GetBag()[uint32(op.Target.Item.ItemID)]
+	u.SetBagItem(uint32(op.Target.Item.ItemID), num-uint32(op.Target.Item.Count))
+
+	r := rand.Intn(10) + 20*int(num)
 	if u.GetSatietyDegree()+int32(r) > 100 {
 		u.SetSatietyDegree(100)
 	} else {
 		u.SetSatietyDegree(u.GetSatietyDegree() + int32(r))
-
 	}
+	log.Result = fmt.Sprintf("食用%d个,饱食度+%d", op.Target.Item.Count, r)
 
-	u.AddActionLog(&ActionLog{
-		ActionType: op.Action,
-		Action:     op.Reason,
-		Time:       WorldMap.Gmap.GlobalTime.GetTime(),
-		Result:     "饱食度+" + strconv.Itoa(r),
-	})
+	u.AddActionLog(log)
 }
 func ActionSleep(op *ActionMsg, u EntityInterface) {
 	log := &ActionLog{
@@ -104,5 +111,22 @@ func ActionSleep(op *ActionMsg, u EntityInterface) {
 	u.AddActionLog(log)
 }
 func ActionPickUp(op *ActionMsg, u EntityInterface) {
-
+	it := ItemCfg.GetById(int(op.Target.Item.ItemID))
+	if it == nil {
+		u.AddActionLog(&ActionLog{
+			ActionType: op.Action,
+			Action:     op.Reason,
+			Time:       WorldMap.Gmap.GlobalTime.GetTime(),
+			Result:     "周围没有这个物品或参数有误",
+		})
+		return
+	}
+	u.AddBagItem(uint32(op.Target.Item.ItemID), uint32(op.Target.Item.Count))
+	log := &ActionLog{
+		ActionType: op.Action,
+		Action:     op.Reason,
+		Time:       WorldMap.Gmap.GlobalTime.GetTime(),
+		Result:     fmt.Sprintf("获得%d个%s", op.Target.Item.Count, it.Name),
+	}
+	u.AddActionLog(log)
 }

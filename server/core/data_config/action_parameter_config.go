@@ -30,6 +30,7 @@ type XmlActionParameterConfig struct {
 	ActionSleep                uint32
 	ActionTypeCuttingDownTrees uint32
 	ActionTypeGrow             uint32
+	ActionTypePickUp           uint32
 }
 
 func (this *XmlActionParameterConfig) LoadConfig() bool {
@@ -180,6 +181,21 @@ func (data_sheet *XmlActionParameterConfig) LoadXmlActionParameterConfig(path ..
 
 	}
 
+	{
+		var dataValStruct, exist = dataMap["action_type_pick_up"]
+		if !exist {
+			return fmt.Errorf("ActionTypePickUp Not Exist")
+		}
+		var dataVal = dataValStruct.Content
+
+		intVal, err := strconv.ParseInt(dataVal, 10, 64)
+		if err != nil {
+			return err
+		}
+		data_sheet.ActionTypePickUp = uint32(intVal)
+
+	}
+
 	return nil
 }
 
@@ -225,4 +241,9 @@ func (this *XmlActionParameterConfig) GetActionTypeCuttingDownTrees() uint32 {
 // 生长(增加寿命和生命值)
 func (this *XmlActionParameterConfig) GetActionTypeGrow() uint32 {
 	return this.ActionTypeGrow
+}
+
+// 拾取地图周围指定item
+func (this *XmlActionParameterConfig) GetActionTypePickUp() uint32 {
+	return this.ActionTypePickUp
 }

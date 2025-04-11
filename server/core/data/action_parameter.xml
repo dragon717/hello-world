@@ -9,5 +9,6 @@
     <data key="action_sleep" content="100050" ty="uint32" description="睡觉(回复生命值,减少饱食度)"  />
     <data key="action_type_Cutting_down_trees" content="100060" ty="uint32" description="砍树(获得木头,需要伐木斧)"  />
     <data key="action_type_grow" content="100070"  ty="uint32" description="生长(增加寿命和生命值)"  />
+    <data key="action_type_pick_up" content="100080" ty="uint32" description="拾取地图周围指定item"/>
 
 </root>

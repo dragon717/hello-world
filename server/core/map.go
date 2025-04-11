@@ -116,7 +116,7 @@ func (m *Wmap) GetAroundInfo(x, y int, size int, selfId int32) string {
 				infoMap[entityInterface.GetName()] = string(ejson)
 			}
 			for _, item := range m.Map[i][j].ItemList {
-				infoMap[item.Name] = fmt.Sprintf("%d", item.Num)
+				infoMap[item.Name] = fmt.Sprintf("%+v", item)
 			}
 		}
 	}
@@ -127,15 +127,24 @@ func (m *Wmap) GenerateRandItem() {
 	it := &Item{
 		Num: 1,
 	}
-	ranx := rand.IntN(int(m.Size)) - 1
-	rany := rand.IntN(int(m.Size)) - 1
-	if rand.IntN(3) > 1 {
+	ranx := rand.IntN(int(m.Size - 1))
+	rany := rand.IntN(int(m.Size - 1))
+	if m.Map[ranx][rany].ItemList == nil {
+		m.Map[ranx][rany].ItemList = make([]*Item, 0)
+	}
+	ran := rand.IntN(3)
+	switch ran {
+	case 0:
 		it.ID = ItemParamCfg.GetItemBranch()
 		it.Name = ItemCfg.GetById(int(ItemParamCfg.GetItemBranch())).Name
 		it.Type = ItemtypeParamCfg.GetItemTypeMaterial()
-	} else {
+	case 1:
 		it.ID = ItemParamCfg.GetItemPebble()
 		it.Name = ItemCfg.GetById(int(ItemParamCfg.GetItemPebble())).Name
+		it.Type = ItemtypeParamCfg.GetItemTypeMaterial()
+	case 2:
+		it.ID = ItemParamCfg.GetItemBerry()
+		it.Name = ItemCfg.GetById(int(ItemParamCfg.GetItemBerry())).Name
 		it.Type = ItemtypeParamCfg.GetItemTypeMaterial()
 	}
 	m.Map[ranx][rany].ItemList = append(m.Map[ranx][rany].ItemList, it)

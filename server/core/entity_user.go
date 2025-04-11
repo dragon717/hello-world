@@ -40,6 +40,7 @@ func (u *EntityUser) RegisterAction() {
 	u.Register(ActionParamCfg.ActionTypeBreakFirst, ActionEatDinner)
 	u.Register(ActionParamCfg.ActionTypeLunch, ActionEatDinner)
 	u.Register(ActionParamCfg.ActionDinner, ActionEatDinner)
+	u.Register(ActionParamCfg.ActionTypePickUp, ActionPickUp)
 
 }
 
