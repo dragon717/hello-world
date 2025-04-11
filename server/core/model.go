@@ -97,7 +97,7 @@ func sendmsg(entity EntityInterface) string {
 	entity.SendActionChan(formatRes(jsonData))
 
 	js, _ := json.Marshal(jsonData)
-	fmt.Printf("[%v]---[ACTION]---%v", time.Now(), string(js))
+	fmt.Printf("[%v]---[ACTION]---%v\n", time.Now(), string(js))
 	return string(js)
 }
 func formatRes(actionmsg *ActionMsg) *ActionMsg {
