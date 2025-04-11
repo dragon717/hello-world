@@ -109,11 +109,13 @@ type Position struct {
 	entityInfo := fmt.Sprintf("实体大全:%s\n", common.JsonMarshal(EntityCfg.List))
 	itemInfo := fmt.Sprintf("物品大全:%s\n", common.JsonMarshal(ItemCfg.List))
 
-	fmt.Println(baseinfo)
-	fmt.Println(mapInfo)
-	fmt.Println(actionInfo)
-	fmt.Println(entityInfo)
-	fmt.Println(itemInfo)
+	if !(*devMode) {
+		fmt.Println(baseinfo)
+		fmt.Println(mapInfo)
+		fmt.Println(actionInfo)
+		fmt.Println(entityInfo)
+		fmt.Println(itemInfo)
+	}
 	//entityInfo := fmt.Sprintf("实体类型:%s\n", common.JsonMarshal(EntityCfg.List))
 	msg = fmt.Sprintf("%s%s%s%s%s你可以使用'行为类型'进行交互或者活动,请结合记忆(上下文)给出一个行为，行为的结果可能失败或者有前提条件，需要你去努力实现他们,请用JSON格式响应以下请求，不要包含任何解释或格式化字符。JSON格式对应结构体:%s.用例:%s,%s,%s,%s,%s,%s", baseinfo, mapInfo, actionInfo, entityInfo, itemInfo, stu, example1, example2, example3, example4, example5, example6)
 	return msg

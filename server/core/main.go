@@ -1,12 +1,15 @@
 package main
 
 import (
+	"flag"
 	"math/rand"
 )
 
 var WorldMap *World
+var devMode = flag.Bool("dev", false, "Enable development mode (disable printing)")
 
 func main() {
+	flag.Parse() // 必须调用以解析flag参数
 	InitCfg()
 	initModelPool(16)
 
