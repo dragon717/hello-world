@@ -36,8 +36,10 @@ func (m *Monitor) Start() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
-	go m.receiveData()
-	go m.display()
+	go func() {
+		m.receiveData()
+		m.display()
+	}()
 
 	<-sigChan
 	m.conn.Close()
