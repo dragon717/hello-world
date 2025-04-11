@@ -61,7 +61,7 @@ func (u *EntityUser) LifeProcess() {
 			}
 		case <-tickerThree.C:
 			res := sendmsg(u)
-			fmt.Println(res)
+			fmt.Println("---[ACTION]---", res)
 		case <-tickerTen.C:
 			if u.Age > uint32(80+rand.Intn(10)) {
 				WorldMap.Gmap.DeadChan <- u
