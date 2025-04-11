@@ -22,7 +22,7 @@ var ItemCfg = info.LoadItemCfg()
 var ItemParamCfg *data_config.XmlItemParameterConfig
 var ItemtypeParamCfg *data_config.XmlItemTypeParameterConfig
 
-var ACTION_RATE time.Duration = 1 //api请求速率
+var ACTION_RATE time.Duration = 1 //api请求速率 单位秒
 
 func InitCfg() {
 
