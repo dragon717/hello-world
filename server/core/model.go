@@ -3,11 +3,14 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"github.com/google/generative-ai-go/genai"
-	"google.golang.org/api/option"
+	"fmt"
 	"log"
 	"os"
 	"strings"
+	"time"
+
+	"github.com/google/generative-ai-go/genai"
+	"google.golang.org/api/option"
 )
 
 var GmodelPool *ModelPool
@@ -68,7 +71,10 @@ func sendmsg(entity EntityInterface) string {
 
 	resp, err := GmodelPool.Get().GenerateContent(gctx, prompt)
 	if err != nil {
-		log.Println("GenerateContent error:", err)
+		if !*(devMode) {
+			log.Println("[%d] GenerateContent error:", GmodelPool.Index, err)
+		}
+		sendmsg(entity)
 		return ""
 	}
 
@@ -91,7 +97,7 @@ func sendmsg(entity EntityInterface) string {
 	entity.SendActionChan(formatRes(jsonData))
 
 	js, _ := json.Marshal(jsonData)
-
+	fmt.Printf("[%v]---[ACTION]---%v", time.Now(), string(js))
 	return string(js)
 }
 func formatRes(actionmsg *ActionMsg) *ActionMsg {

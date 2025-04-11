@@ -58,34 +58,7 @@ type ResultMsg struct {
 func formatActionMsg(you EntityInterface) string {
 	var msg string
 
-	var record string
-	for _, actionLog := range you.GetActionLog() {
-		record += fmt.Sprintf("%s你%s", actionLog.Time, actionLog.Action)
-		if len(actionLog.Result) != 0 {
-			record += fmt.Sprintf("结果：%s,", actionLog.Result)
-		}
-	}
-	//record, _ := json.Marshal(you.GetActionLog())
-	baseinfo := fmt.Sprintf("你的名字是:%s(ID:%d;);类型ID:%d;背包:%+v;坐标:[%d,%d],生命值:%d;饱食度:%d;记忆:(%s) \n", you.GetName(), you.GetId(), you.GetType(), you.GetBag(), you.GetX(), you.GetY(), you.GetHP(), you.GetSatietyDegree(), string(record))
-	mapInfo := fmt.Sprintf("当前时间:%s,地图周围信息:%s\n", WorldMap.Gmap.GlobalTime.GetTime(), WorldMap.Gmap.GetAroundInfo(int(you.GetX()), int(you.GetY()), 1, you.GetId()))
-
-	actionInfo := fmt.Sprintf("可用行为类型:%s\n", you.GetActionListInfo())
-	entityInfo := fmt.Sprintf("实体大全:%s\n", common.JsonMarshal(EntityCfg.List))
-	itemInfo := fmt.Sprintf("物品大全:%s\n", common.JsonMarshal(ItemCfg.List))
-
-	if !(*devMode) {
-		fmt.Print(baseinfo)
-		fmt.Print(mapInfo)
-		fmt.Print(actionInfo)
-		fmt.Print(entityInfo)
-		fmt.Print(itemInfo)
-	}
-	//entityInfo := fmt.Sprintf("实体类型:%s\n", common.JsonMarshal(EntityCfg.List))
-	msg = fmt.Sprintf("%s%s%s%s%s你可以使用'行为类型'进行交互或者活动,请结合记忆(上下文)给出一个行为，行为的结果可能失败或者有前提条件，需要你去努力实现他们,请用JSON格式响应以下请求，不要包含任何解释或格式化字符。JSON格式对应结构体:%s.用例:%s,%s,%s,%s,%s,%s", baseinfo, mapInfo, actionInfo, entityInfo, itemInfo, stu, example1, example2, example3, example4, example5, example6)
-	return msg
-}
-
-var stu = `统一行为结构体
+	stu := `统一行为结构体
 type ActionMsg struct {
 	SelfID int32        json:"selfid"
 	Type   uint32       json:"action" // 使用新枚举类型
@@ -120,6 +93,34 @@ type Position struct {
 	X int json:"x"
 	Y int json:"y"
 }`
+
+	var record string
+	for _, actionLog := range you.GetActionLog() {
+		record += fmt.Sprintf("%s你%s", actionLog.Time, actionLog.Action)
+		if len(actionLog.Result) != 0 {
+			record += fmt.Sprintf("结果：%s,", actionLog.Result)
+		}
+	}
+	//record, _ := json.Marshal(you.GetActionLog())
+	baseinfo := fmt.Sprintf("你的名字是:%s(ID:%d;);类型ID:%d;背包:%+v;坐标:[%d,%d],生命值:%d;饱食度:%d;记忆:(%s) \n", you.GetName(), you.GetId(), you.GetType(), you.GetBag(), you.GetX(), you.GetY(), you.GetHP(), you.GetSatietyDegree(), string(record))
+	mapInfo := fmt.Sprintf("当前时间:%s,地图周围信息:%s\n", WorldMap.Gmap.GlobalTime.GetTime(), WorldMap.Gmap.GetAroundInfo(int(you.GetX()), int(you.GetY()), 1, you.GetId()))
+
+	actionInfo := fmt.Sprintf("可用行为类型:%s\n", you.GetActionListInfo())
+	entityInfo := fmt.Sprintf("实体大全:%s\n", common.JsonMarshal(EntityCfg.List))
+	itemInfo := fmt.Sprintf("物品大全:%s\n", common.JsonMarshal(ItemCfg.List))
+
+	if !(*devMode) {
+		fmt.Println(baseinfo)
+		fmt.Println(mapInfo)
+		fmt.Println(actionInfo)
+		fmt.Println(entityInfo)
+		fmt.Println(itemInfo)
+	}
+	//entityInfo := fmt.Sprintf("实体类型:%s\n", common.JsonMarshal(EntityCfg.List))
+	msg = fmt.Sprintf("%s%s%s%s%s你可以使用'行为类型'进行交互或者活动,请结合记忆(上下文)给出一个行为，行为的结果可能失败或者有前提条件，需要你去努力实现他们,请用JSON格式响应以下请求，不要包含任何解释或格式化字符。JSON格式对应结构体:%s.用例:%s,%s,%s,%s,%s,%s", baseinfo, mapInfo, actionInfo, entityInfo, itemInfo, stu, example1, example2, example3, example4, example5, example6)
+	return fmt.Sprint(msg, " 请随意走动")
+}
+
 var example1 = `
 //移动操作（目标实体）
 {

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -60,8 +59,7 @@ func (u *EntityUser) LifeProcess() {
 				return
 			}
 		case <-tickerThree.C:
-			res := sendmsg(u)
-			fmt.Println("---[ACTION]---", res)
+			_ = sendmsg(u)
 		case <-tickerTen.C:
 			if u.Age > uint32(80+rand.Intn(10)) {
 				WorldMap.Gmap.DeadChan <- u
