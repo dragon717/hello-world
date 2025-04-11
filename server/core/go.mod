@@ -2,6 +2,8 @@ module Test
 
 go 1.23.0
 
+toolchain go1.23.8
+
 require (
 	github.com/google/generative-ai-go v0.19.0
 	google.golang.org/api v0.228.0
