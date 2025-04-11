@@ -85,9 +85,27 @@ func sendmsg(entity EntityInterface) string {
 	if err := json.Unmarshal([]byte(s2), &jsonData); err != nil {
 		log.Fatalf("响应格式无效: %v\n原始响应: %s", err, rawResponse.String())
 	}
-	entity.SendActionChan(jsonData)
+	entity.SendActionChan(formatRes(jsonData))
 
 	js, _ := json.Marshal(jsonData)
 
 	return string(js)
+}
+func formatRes(actionmsg *ActionMsg) *ActionMsg {
+	if actionmsg.Target.Item == nil {
+		actionmsg.Target.Item = &ItemTarget{}
+	}
+	if actionmsg.Target.Position == nil {
+		actionmsg.Target.Position = &Position{}
+	}
+	if actionmsg.Target.Entity == nil {
+		actionmsg.Target.Entity = &EntityTarget{}
+	}
+	if actionmsg.Target.Craft == nil {
+		actionmsg.Target.Craft = &CraftTarget{}
+	}
+	if actionmsg.Target.Duration == nil {
+		actionmsg.Target.Duration = &DurationTarget{}
+	}
+	return actionmsg
 }
