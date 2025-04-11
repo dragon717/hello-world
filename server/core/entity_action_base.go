@@ -74,7 +74,7 @@ func ActionEatDinner(op *ActionMsg, u EntityInterface) {
 	num := u.GetBag()[uint32(op.Target.Item.ItemID)]
 	u.SetBagItem(uint32(op.Target.Item.ItemID), num-uint32(op.Target.Item.Count))
 
-	r := rand.Intn(10) + 20*int(num)
+	r := (rand.Intn(10) + 20) * op.Target.Item.Count
 	if u.GetSatietyDegree()+int32(r) > 100 {
 		u.SetSatietyDegree(100)
 	} else {

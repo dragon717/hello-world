@@ -3,11 +3,14 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"github.com/google/generative-ai-go/genai"
-	"google.golang.org/api/option"
+	"fmt"
 	"log"
 	"os"
 	"strings"
+	"time"
+
+	"github.com/google/generative-ai-go/genai"
+	"google.golang.org/api/option"
 )
 
 var GmodelPool *ModelPool
@@ -68,7 +71,9 @@ func sendmsg(entity EntityInterface) string {
 
 	resp, err := GmodelPool.Get().GenerateContent(gctx, prompt)
 	if err != nil {
-		log.Println("GenerateContent error:", err)
+		if !*(devMode) {
+			log.Println("[%d] GenerateContent error:", GmodelPool.Index, err)
+		}
 		sendmsg(entity)
 		return ""
 	}
@@ -92,9 +97,48 @@ func sendmsg(entity EntityInterface) string {
 	entity.SendActionChan(formatRes(jsonData))
 
 	js, _ := json.Marshal(jsonData)
-
+	fmt.Printf("[%v]---[ACTION]---%v\n", time.Now(), string(js))
 	return string(js)
 }
+
+func SendTargetTaskMsg(entity EntityInterface) string {
+
+	taskMsg := formatTargetTaskMsg(entity)
+
+	prompt := genai.Text(taskMsg)
+
+	resp, err := GmodelPool.Get().GenerateContent(gctx, prompt)
+	if err != nil {
+		if !*(devMode) {
+			log.Println("[%d] GenerateContent error:", GmodelPool.Index, err)
+		}
+		SendTargetTaskMsg(entity)
+		return ""
+	}
+
+	var rawResponse strings.Builder
+	if resp.Candidates != nil {
+		for _, candidate := range resp.Candidates {
+			for _, part := range candidate.Content.Parts {
+				rawResponse.WriteString(string(part.(genai.Text)))
+			}
+		}
+	}
+	s1 := strings.ReplaceAll(rawResponse.String(), "```", "")
+	s2 := strings.ReplaceAll(s1, "json", "")
+	var msg *TaskMsg
+	err = json.Unmarshal([]byte(s2), &msg)
+	if err != nil {
+		fmt.Println(err)
+		return ""
+	}
+
+	if msg.IsChange {
+		entity.SetTargetTask(msg.Task)
+	}
+	return ""
+}
+
 func formatRes(actionmsg *ActionMsg) *ActionMsg {
 	if actionmsg.Target.Item == nil {
 		actionmsg.Target.Item = &ItemTarget{}

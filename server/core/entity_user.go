@@ -60,6 +60,9 @@ func (u *EntityUser) LifeProcess() {
 			}
 		case <-tickerThree.C:
 			_ = sendmsg(u)
+			if len(u.GetActionLog())%10 == 0 {
+				SendTargetTaskMsg(u)
+			}
 		case <-tickerTen.C:
 			if u.Age > uint32(80+rand.Intn(10)) {
 				WorldMap.Gmap.DeadChan <- u

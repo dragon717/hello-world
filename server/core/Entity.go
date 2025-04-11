@@ -82,6 +82,7 @@ func NewEntity(age uint32, name string, id, ty, hp int32, x, y int) *Entity {
 		Age:           age,
 		Bag:           make(map[uint32]uint32),
 		SatietyDegree: 100,
+		TargetTask:    "活着",
 		Status:        true,
 		actionLog:     make([]*ActionLog, 0),
 		ResultChan:    make(chan *ResultMsg, 1),
