@@ -18,6 +18,7 @@ type EntityInterface interface {
 	GetAge() uint32
 	GetSatietyDegree() int32
 	GetBag() map[uint32]uint32
+	GetTargetTask() string
 
 	SetX(x uint32)
 	SetY(y uint32)
@@ -28,6 +29,7 @@ type EntityInterface interface {
 	SetType(ty int32)
 	SetAge(age uint32)
 	SetSatietyDegree(satietyDegree int32)
+	SetTargetTask(targetTask string)
 
 	SetBagItem(itemId uint32, num uint32)
 	AddBagItem(itemId uint32, num uint32)
@@ -52,6 +54,7 @@ type Entity struct {
 	X             uint32
 	Y             uint32
 	SatietyDegree int32                                        //饱食度
+	TargetTask    string                                       //目标任务
 	Bag           map[uint32]uint32                            //背包
 	Status        bool                                         //是否可交互
 	actionLog     []*ActionLog                                 //记忆
@@ -130,6 +133,9 @@ func (e *Entity) GetActionLog() []*ActionLog {
 func (e *Entity) GetSatietyDegree() int32 {
 	return e.SatietyDegree
 }
+func (e *Entity) GetTargetTask() string {
+	return e.TargetTask
+}
 func (e *Entity) SetBagItem(itemId uint32, num uint32) {
 	e.Bag[itemId] = num
 }
@@ -166,6 +172,10 @@ func (e *Entity) SetAge(age uint32) {
 func (e *Entity) SetSatietyDegree(satietyDegree int32) {
 	e.SatietyDegree = satietyDegree
 }
+func (e *Entity) SetTargetTask(targetTask string) {
+	e.TargetTask = targetTask
+}
+
 func (e *Entity) AddActionLog(log *ActionLog) *ActionLog {
 	log.ID = uint32(len(e.actionLog) + 1)
 	e.actionLog = append(e.actionLog, log)

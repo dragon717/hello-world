@@ -69,6 +69,7 @@ func sendmsg(entity EntityInterface) string {
 	resp, err := GmodelPool.Get().GenerateContent(gctx, prompt)
 	if err != nil {
 		log.Println("GenerateContent error:", err)
+		sendmsg(entity)
 		return ""
 	}
 
