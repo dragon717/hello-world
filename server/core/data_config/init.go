@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	DataConfigDir = "../data/"
+	DataConfigDir = "data/"
 )
 
 func SetDataConfigDir(dir string) {

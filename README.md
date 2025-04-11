@@ -38,7 +38,7 @@
 
 ## 快速开始
 1. 环境要求
-   - Go 1.20+
+   - Go 1.23
    - Godot 4.4
    - Redis 7.0+
    - Gemini API Key
