@@ -2,11 +2,12 @@
 <!-- name=序号=string id=参数内容=int ty=参数类型=string  type_id=参数类型=int description=细节描述=string need_type=执行需要的道具类型=int need_id=执行需要的道具ID=int   -->
 <root>
     <data name="action_born" id="100000" ty="uint32" type_id="2" description="出生" need_type="" need_id="" />
-    <data name="action_type_move" id="100001" ty="uint32" type_id="1" description="移动" need_type="" need_id="" />
-    <data name="action_type_break_first" id="100002" ty="uint32" type_id="1" description="吃早餐(回复饱食度,需要食物)"  need_type="2000" need_id=""  />
-    <data name="action_type_lunch" id="100003" ty="uint32" type_id="1" description="吃午饭(回复饱食度,需要食物)" need_type="2000" need_id="" />
-    <data name="action_dinner" id="100004" ty="uint32" type_id="1" description="吃晚饭(回复饱食度,需要食物)" need_type="2000" need_id="" />
-    <data name="action_sleep" id="100005" ty="uint32" type_id="1" description="睡觉(回复生命值,减少饱食度)" need_type="" need_id="" />
-    <data name="action_type_Cutting_down_trees" id="100006" ty="uint32" type_id="1" description="砍树(获得木头,需要伐木斧)" need_type="1000" need_id="10001" />
-    <data name="action_type_grow" id="100007" ty="uint32" type_id="2" description="生长(增加寿命和生命值)" need_type="" need_id="" />
+    <data name="action_type_move" id="100010" ty="uint32" type_id="1" description="移动" need_type="" need_id="" />
+    <data name="action_type_break_first" id="100020" ty="uint32" type_id="1" description="吃早餐(回复饱食度,需要食物)"  need_type="2000" need_id=""  />
+    <data name="action_type_lunch" id="100030" ty="uint32" type_id="1" description="吃午饭(回复饱食度,需要食物)" need_type="2000" need_id="" />
+    <data name="action_dinner" id="100040" ty="uint32" type_id="1" description="吃晚饭(回复饱食度,需要食物)" need_type="2000" need_id="" />
+    <data name="action_sleep" id="100050" ty="uint32" type_id="1" description="睡觉(回复生命值,减少饱食度)" need_type="" need_id="" />
+    <data name="action_type_Cutting_down_trees" id="100060" ty="uint32" type_id="3" description="砍树(获得木头,需要伐木斧)" need_type="1000" need_id="10001" />
+    <data name="action_type_grow" id="100070" ty="uint32" type_id="2" description="生长(增加寿命和生命值)" need_type="" need_id="" />
+    <data name="action_type_pick_up" id="100080" ty="uint32" type_id="1" description="拾取周围的item" need_type="" need_id="" />
 </root>

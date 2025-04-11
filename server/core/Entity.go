@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strings"
 )
 
 type EntityInterface interface {
@@ -15,7 +16,7 @@ type EntityInterface interface {
 	GetY() uint32
 	GetActionLog() []*ActionLog
 	GetAge() uint32
-	GetSatietyDegree() uint32
+	GetSatietyDegree() int32
 	GetBag() map[uint32]uint32
 
 	SetX(x uint32)
@@ -26,12 +27,13 @@ type EntityInterface interface {
 	SetName(name string)
 	SetType(ty int32)
 	SetAge(age uint32)
-	SetSatietyDegree(satietyDegree uint32)
+	SetSatietyDegree(satietyDegree int32)
 
 	SetBagItem(itemId uint32, num uint32)
 	AddBagItem(itemId uint32, num uint32)
 
-	GetInfo() map[string]string //用于agent的数据
+	GetInfo(full bool) map[string]string //用于agent的数据
+	GetActionListInfo() []string         //用于agent的数据
 
 	RegisterAction()
 
@@ -49,7 +51,7 @@ type Entity struct {
 	Age           uint32
 	X             uint32
 	Y             uint32
-	SatietyDegree uint32                                       //饱食度
+	SatietyDegree int32                                        //饱食度
 	Bag           map[uint32]uint32                            //背包
 	Status        bool                                         //是否可交互
 	actionLog     []*ActionLog                                 //记忆
@@ -125,7 +127,7 @@ func (e *Entity) GetAge() uint32 {
 func (e *Entity) GetActionLog() []*ActionLog {
 	return e.actionLog
 }
-func (e *Entity) GetSatietyDegree() uint32 {
+func (e *Entity) GetSatietyDegree() int32 {
 	return e.SatietyDegree
 }
 func (e *Entity) SetBagItem(itemId uint32, num uint32) {
@@ -161,7 +163,7 @@ func (e *Entity) SetY(y uint32) {
 func (e *Entity) SetAge(age uint32) {
 	e.Age = age
 }
-func (e *Entity) SetSatietyDegree(satietyDegree uint32) {
+func (e *Entity) SetSatietyDegree(satietyDegree int32) {
 	e.SatietyDegree = satietyDegree
 }
 func (e *Entity) AddActionLog(log *ActionLog) *ActionLog {
@@ -207,8 +209,8 @@ func (e *Entity) ConsumerChan() {
 func (e *Entity) RegisterAction() {
 }
 
-func (e *Entity) GetInfo() map[string]string {
-	return map[string]string{
+func (e *Entity) GetInfo(full bool) map[string]string {
+	i := map[string]string{
 		"id":            fmt.Sprintf("%d", e.Id),
 		"name":          e.Name,
 		"type":          fmt.Sprintf("%d", e.Type),
@@ -220,4 +222,30 @@ func (e *Entity) GetInfo() map[string]string {
 		"status":        fmt.Sprintf("%t", e.Status),
 		"bag":           fmt.Sprintf("%v", e.Bag),
 	}
+	if full {
+		i["actionlog"] = fmt.Sprintf("%v", e.actionLog)
+		actionList := make([]string, 0)
+		for u, _ := range e.ActionList {
+			actionList = append(actionList, fmt.Sprintf("%v", ActionCfg.GetById(int(u))))
+		}
+		i["actionList"] = strings.Join(actionList, ",")
+	}
+	return i
+}
+func (e *Entity) GetActionListInfo() []string {
+	actionList := make([]string, 0)
+	for u, _ := range e.ActionList {
+		ac := ActionCfg.GetById(int(u))
+		switch ac.TypeId {
+		case int(ActionTypeParamCfg.ActionTypeInitiative):
+			ac.Ty = "主动"
+		case int(ActionTypeParamCfg.EntityTypePassive):
+			ac.Ty = "被动"
+		case int(ActionTypeParamCfg.EntityTypeMutual):
+			ac.Ty = "相互"
+		}
+		actionList = append(actionList, fmt.Sprintf("%+v", ac))
+	}
+	return actionList
+
 }

@@ -22,7 +22,7 @@ func NewEntityTree(name string, treeId int32, age uint32, x, y int) *EntityTree 
 }
 
 func (u *EntityTree) RegisterAction() {
-	u.Register(ActionParamCfg.GetActionTypeCuttingDownTrees(), BeActionCuttingDownTrees)
+	u.Register(ActionParamCfg.GetActionTypeCuttingDownTrees()+1, BeActionCuttingDownTrees)
 }
 
 func (u *EntityTree) LifeProcess() {

@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand/v2"
 	"time"
 )
 
@@ -86,15 +87,17 @@ func (m *Wmap) TimeProcess() {
 			})
 			delete(WorldMap.GEntityList, uint32(entity.GetId()))
 			delete(WorldMap.GEntityTypeList, uint32(entity.GetId()))
-			fmt.Printf("%+v  is dead!", entity)
+			fmt.Println(entity, " dead")
 		case <-ticker.C:
 			m.GlobalTime.AddHour()
+
+			m.GenerateRandItem()
 		}
 	}
 }
 
 // 获取周围信息
-func (m *Wmap) GetAroundInfo(x, y int, size int) string {
+func (m *Wmap) GetAroundInfo(x, y int, size int, selfId int32) string {
 	var infoMap map[string]string
 	infoMap = make(map[string]string)
 	for i := x - size; i <= x+size; i++ {
@@ -106,11 +109,35 @@ func (m *Wmap) GetAroundInfo(x, y int, size int) string {
 				continue
 			}
 			for _, entityInterface := range m.Map[i][j].EntityList {
-				ejson, _ := json.Marshal(entityInterface.GetInfo())
+				if entityInterface.GetId() == selfId {
+					continue
+				}
+				ejson, _ := json.Marshal(entityInterface.GetInfo(false))
 				infoMap[entityInterface.GetName()] = string(ejson)
+			}
+			for _, item := range m.Map[i][j].ItemList {
+				infoMap[item.Name] = fmt.Sprintf("%d", item.Num)
 			}
 		}
 	}
 	info := fmt.Sprintf("%+v", infoMap)
 	return string(info)
+}
+func (m *Wmap) GenerateRandItem() {
+	it := &Item{
+		Num: 1,
+	}
+	ranx := rand.IntN(int(m.Size)) - 1
+	rany := rand.IntN(int(m.Size)) - 1
+	if rand.IntN(3) > 1 {
+		it.ID = ItemParamCfg.GetItemBranch()
+		it.Name = ItemCfg.GetById(int(ItemParamCfg.GetItemBranch())).Name
+		it.Type = ItemtypeParamCfg.GetItemTypeMaterial()
+	} else {
+		it.ID = ItemParamCfg.GetItemPebble()
+		it.Name = ItemCfg.GetById(int(ItemParamCfg.GetItemPebble())).Name
+		it.Type = ItemtypeParamCfg.GetItemTypeMaterial()
+	}
+	m.Map[ranx][rany].ItemList = append(m.Map[ranx][rany].ItemList, it)
+
 }
