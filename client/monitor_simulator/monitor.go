@@ -7,7 +7,6 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 )
 
 type Monitor struct {
@@ -38,7 +37,8 @@ func (m *Monitor) Start() {
 
 	go func() {
 		m.receiveData()
-		m.display()
+		m.displayMap()
+		m.displayEntities()
 	}()
 
 	<-sigChan
@@ -46,7 +46,7 @@ func (m *Monitor) Start() {
 }
 
 func (m *Monitor) receiveData() {
-	buf := make([]byte, 4096)
+	buf := make([]byte, 100000)
 	for {
 		n, err := m.conn.Read(buf)
 		if err != nil {
@@ -110,7 +110,7 @@ func (m *Monitor) processData(data map[string]interface{}) {
 				copy(m.mapCache[i], newMapData[i])
 			}
 			// Only display when map data changes
-			m.display()
+			m.displayMap()
 		}
 	}
 
@@ -121,46 +121,48 @@ func (m *Monitor) processData(data map[string]interface{}) {
 			if entityData, ok := entity.(map[string]interface{}); ok {
 				m.entities[id] = make(map[string]string)
 				for k, v := range entityData {
-					m.entities[id][k] = fmt.Sprintf("%v", v)
+					m.entities[id][k] = fmt.Sprintf("%+v", v)
 				}
 			}
 		}
 	}
+	m.displayEntities()
 }
 
-func (m *Monitor) display() {
-	// Clear screen
-	fmt.Print("\033[H\033[2J")
+func (m *Monitor) displayMap() {
+	if ShowMode() != 0 {
+		return
+	}
 
-	switch ShowMode() {
-	case 0:
-		// Only display map if it has changed
-		if len(m.mapData) > 0 {
-			fmt.Println("=== Map ===")
-			for _, row := range m.mapData {
-				for _, cell := range row {
-					if cell == "" {
-						fmt.Print(".")
-					} else {
-						fmt.Print(cell)
-					}
-					fmt.Print(" ")
+	// Only display map if it has changed
+	if len(m.mapData) > 0 {
+		fmt.Println("=== Map ===")
+		for _, row := range m.mapData {
+			for _, cell := range row {
+				if cell == "" {
+					fmt.Print(".")
+				} else {
+					fmt.Print(cell)
 				}
-				fmt.Println()
-			}
-		}
-
-	case 1:
-		// Display entities
-		fmt.Println("\n=== Entities ===")
-		for id, entity := range m.entities {
-			fmt.Printf("ID: %s\n", id)
-			for k, v := range entity {
-				fmt.Printf("  %s: %s\n", k, v)
+				fmt.Print(" ")
 			}
 			fmt.Println()
 		}
 	}
-	// Wait a bit before refreshing
-	time.Sleep(1 * time.Second)
+}
+
+func (m *Monitor) displayEntities() {
+	if ShowMode() != 1 {
+		return
+	}
+
+	// Display entities
+	fmt.Println("\n=== Entities ===")
+	for id, entity := range m.entities {
+		fmt.Printf("ID: %s\n", id)
+		for k, v := range entity {
+			fmt.Printf("  %s: %s\n", k, v)
+		}
+		fmt.Println()
+	}
 }

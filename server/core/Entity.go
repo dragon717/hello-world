@@ -234,10 +234,14 @@ func (e *Entity) GetInfo(full bool) map[string]string {
 		"bag":           fmt.Sprintf("%v", e.Bag),
 	}
 	if full {
-		i["actionlog"] = fmt.Sprintf("%v", e.actionLog)
+		actionLog := make([]string, 0)
+		for u, _ := range e.actionLog {
+			actionLog = append(actionLog, fmt.Sprintf("%+v", e.actionLog[u]))
+		}
+		i["actionLog"] = strings.Join(actionLog, ",")
 		actionList := make([]string, 0)
 		for u, _ := range e.ActionList {
-			actionList = append(actionList, fmt.Sprintf("%v", ActionCfg.GetById(int(u))))
+			actionList = append(actionList, fmt.Sprintf("%+v", ActionCfg.GetById(int(u))))
 		}
 		i["actionList"] = strings.Join(actionList, ",")
 	}
