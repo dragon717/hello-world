@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"sort"
 	"syscall"
 )
 
@@ -158,9 +159,27 @@ func (m *Monitor) displayEntities() {
 
 	// Display entities
 	fmt.Println("\n=== Entities ===")
-	for id, entity := range m.entities {
+
+	// Sort the keys
+	keys := make([]string, 0, len(m.entities))
+	for id := range m.entities {
+		keys = append(keys, id)
+	}
+	sort.Strings(keys)
+
+	for _, id := range keys {
+		entity := m.entities[id]
 		fmt.Printf("ID: %s\n", id)
-		for k, v := range entity {
+
+		// Sort the entity keys
+		entityKeys := make([]string, 0, len(entity))
+		for k := range entity {
+			entityKeys = append(entityKeys, k)
+		}
+		sort.Strings(entityKeys)
+
+		for _, k := range entityKeys {
+			v := entity[k]
 			fmt.Printf("  %s: %s\n", k, v)
 		}
 		fmt.Println()
