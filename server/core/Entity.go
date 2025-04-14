@@ -1,9 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"slices"
-	"strings"
 )
 
 type EntityInterface interface {
@@ -234,16 +234,12 @@ func (e *Entity) GetInfo(full bool) map[string]string {
 		"bag":           fmt.Sprintf("%v", e.Bag),
 	}
 	if full {
-		actionLog := make([]string, 0)
-		for u, _ := range e.actionLog {
-			actionLog = append(actionLog, fmt.Sprintf("%+v", e.actionLog[u]))
+		if jsonStr, err := json.Marshal(e.actionLog); err == nil {
+			i["actionLog"] = string(jsonStr)
 		}
-		i["actionLog"] = strings.Join(actionLog, ",")
-		actionList := make([]string, 0)
-		for u, _ := range e.ActionList {
-			actionList = append(actionList, fmt.Sprintf("%+v", ActionCfg.GetById(int(u))))
+		if jsonStr, err := json.Marshal(e.ActionList); err == nil {
+			i["actionList"] = string(jsonStr)
 		}
-		i["actionList"] = strings.Join(actionList, ",")
 	}
 	return i
 }

@@ -11,10 +11,10 @@ import (
 )
 
 type Monitor struct {
-	conn     net.Conn
-	mapData  [][]string
-	mapCache [][]string
-	entities  map[string]map[string]string
+	conn        net.Conn
+	mapData     [][]string
+	mapCache    [][]string
+	entities    map[string]map[string]string
 	entityCache map[string]map[string]string
 }
 
@@ -25,10 +25,10 @@ func NewMonitor(serverAddr string) (*Monitor, error) {
 	}
 
 	return &Monitor{
-		conn:     conn,
-		mapData:  make([][]string, 0),
-		mapCache:  make([][]string, 0),
-		entities:  make(map[string]map[string]string),
+		conn:        conn,
+		mapData:     make([][]string, 0),
+		mapCache:    make([][]string, 0),
+		entities:    make(map[string]map[string]string),
 		entityCache: make(map[string]map[string]string),
 	}, nil
 }
@@ -169,7 +169,6 @@ func (m *Monitor) displayEntities() {
 	}
 
 	// Display entities
-	fmt.Println("\n=== Entities ===")
 
 	// Sort the keys
 	keys := make([]string, 0, len(m.entities))
@@ -182,6 +181,7 @@ func (m *Monitor) displayEntities() {
 		entity := m.entities[id]
 		cachedEntity, ok := m.entityCache[id]
 		if !ok {
+			fmt.Println("\n=== Entities complete packege ===")
 			fmt.Printf("ID: %s (New)\n", id)
 			// Sort the entity keys
 			entityKeys := make([]string, 0, len(entity))
@@ -213,10 +213,28 @@ func (m *Monitor) displayEntities() {
 					fmt.Printf("ID: %s (Updated)\n", id)
 					changed = true
 				}
-				fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedEntity[k])
+				cachedValue := cachedEntity[k]
+				var lastValue map[string]interface{}
+				err := json.Unmarshal([]byte(cachedValue), &lastValue)
+				if err == nil {
+					keys := make([]string, 0, len(lastValue))
+					for key := range lastValue {
+						keys = append(keys, key)
+					}
+					sort.Strings(keys)
+					if len(keys) > 0 {
+						lastkey := keys[len(keys)-1]
+						fmt.Printf("  %s: %s (was: ...%s: %v)\n", k, v, lastkey, lastValue[lastkey])
+					} else {
+						fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedValue)
+					}
+				} else {
+					fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedValue)
+				}
 			}
 		}
 		if changed {
+			fmt.Println("\n=== Entities change ===")
 			fmt.Println()
 		}
 	}
