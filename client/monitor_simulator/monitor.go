@@ -213,6 +213,8 @@ func (m *Monitor) displayEntities() {
 					fmt.Printf("ID: %s (Updated)\n", id)
 					changed = true
 				}
+				fmt.Println("\n=== Entities change ===")
+				fmt.Printf("id: %s name: %s", entity["id"], entity["name"])
 				cachedValue := cachedEntity[k]
 				var lastValue map[string]interface{}
 				err := json.Unmarshal([]byte(cachedValue), &lastValue)
@@ -234,7 +236,6 @@ func (m *Monitor) displayEntities() {
 			}
 		}
 		if changed {
-			fmt.Println("\n=== Entities change ===")
 			fmt.Println()
 		}
 	}
