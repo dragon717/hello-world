@@ -14,7 +14,8 @@ type Monitor struct {
 	conn     net.Conn
 	mapData  [][]string
 	mapCache [][]string
-	entities map[string]map[string]string
+	entities  map[string]map[string]string
+	entityCache map[string]map[string]string
 }
 
 func NewMonitor(serverAddr string) (*Monitor, error) {
@@ -26,8 +27,9 @@ func NewMonitor(serverAddr string) (*Monitor, error) {
 	return &Monitor{
 		conn:     conn,
 		mapData:  make([][]string, 0),
-		mapCache: make([][]string, 0),
-		entities: make(map[string]map[string]string),
+		mapCache:  make([][]string, 0),
+		entities:  make(map[string]map[string]string),
+		entityCache: make(map[string]map[string]string),
 	}, nil
 }
 
@@ -128,6 +130,15 @@ func (m *Monitor) processData(data map[string]interface{}) {
 		}
 	}
 	m.displayEntities()
+
+	// Update entityCache
+	m.entityCache = make(map[string]map[string]string)
+	for id, entity := range m.entities {
+		m.entityCache[id] = make(map[string]string)
+		for k, v := range entity {
+			m.entityCache[id][k] = v
+		}
+	}
 }
 
 func (m *Monitor) displayMap() {
@@ -169,19 +180,44 @@ func (m *Monitor) displayEntities() {
 
 	for _, id := range keys {
 		entity := m.entities[id]
-		fmt.Printf("ID: %s\n", id)
+		cachedEntity, ok := m.entityCache[id]
+		if !ok {
+			fmt.Printf("ID: %s (New)\n", id)
+			// Sort the entity keys
+			entityKeys := make([]string, 0, len(entity))
+			for k := range entity {
+				entityKeys = append(entityKeys, k)
+			}
+			sort.Strings(entityKeys)
 
-		// Sort the entity keys
+			for _, k := range entityKeys {
+				v := entity[k]
+				fmt.Printf("  %s: %s\n", k, v)
+			}
+			fmt.Println()
+			continue
+		}
+
+		// Compare entity properties
+		changed := false
 		entityKeys := make([]string, 0, len(entity))
 		for k := range entity {
 			entityKeys = append(entityKeys, k)
 		}
 		sort.Strings(entityKeys)
-
 		for _, k := range entityKeys {
 			v := entity[k]
-			fmt.Printf("  %s: %s\n", k, v)
+			cachedV, ok := cachedEntity[k]
+			if !ok || v != cachedV {
+				if !changed {
+					fmt.Printf("ID: %s (Updated)\n", id)
+					changed = true
+				}
+				fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedEntity[k])
+			}
 		}
-		fmt.Println()
+		if changed {
+			fmt.Println()
+		}
 	}
 }
