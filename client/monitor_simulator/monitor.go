@@ -8,10 +8,12 @@ import (
 	"os/signal"
 	"sort"
 	"syscall"
+	"time"
 )
 
 type Monitor struct {
 	conn        net.Conn
+	serverAddr  string
 	mapData     [][]string
 	mapCache    [][]string
 	entities    map[string]map[string]string
@@ -26,6 +28,7 @@ func NewMonitor(serverAddr string) (*Monitor, error) {
 
 	return &Monitor{
 		conn:        conn,
+		serverAddr:  serverAddr,
 		mapData:     make([][]string, 0),
 		mapCache:    make([][]string, 0),
 		entities:    make(map[string]map[string]string),
@@ -48,13 +51,37 @@ func (m *Monitor) Start() {
 	m.conn.Close()
 }
 
+func (m *Monitor) reconnect() error {
+	if m.conn != nil {
+		m.conn.Close()
+	}
+	
+	var err error
+	m.conn, err = net.Dial("tcp", m.serverAddr)
+	if err != nil {
+		return fmt.Errorf("reconnect failed: %v", err)
+	}
+	fmt.Println("Successfully reconnected to server")
+	return nil
+}
+
 func (m *Monitor) receiveData() {
 	buf := make([]byte, 100000)
 	for {
+		if m.conn == nil {
+			if err := m.reconnect(); err != nil {
+				fmt.Printf("Reconnect error: %v, retrying in 3 seconds...\n", err)
+				time.Sleep(3 * time.Second)
+				continue
+			}
+		}
+
 		n, err := m.conn.Read(buf)
 		if err != nil {
-			fmt.Printf("Error reading from server: %v\n", err)
-			return
+			fmt.Printf("Connection error: %v, attempting to reconnect...\n", err)
+			m.conn = nil
+			time.Sleep(3 * time.Second)
+			continue
 		}
 
 		var data map[string]interface{}
