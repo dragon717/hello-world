@@ -216,20 +216,11 @@ func (m *Monitor) displayEntities() {
 				fmt.Println("\n=== Entities change ===")
 				fmt.Printf("id: %s name: %s", entity["id"], entity["name"])
 				cachedValue := cachedEntity[k]
-				var lastValue map[string]interface{}
-				err := json.Unmarshal([]byte(cachedValue), &lastValue)
-				if err == nil {
-					keys := make([]string, 0, len(lastValue))
-					for key := range lastValue {
-						keys = append(keys, key)
-					}
-					sort.Strings(keys)
-					if len(keys) > 0 {
-						lastkey := keys[len(keys)-1]
-						fmt.Printf("  %s: %s (was: ...%s: %v)\n", k, v, lastkey, lastValue[lastkey])
-					} else {
-						fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedValue)
-					}
+				var lastValues []map[string]string
+				json.Unmarshal([]byte(cachedValue), &lastValues)
+				if len(lastValues) > 0 {
+					var lastValue = lastValues[len(lastValues)-1]
+					fmt.Printf("  %+v \n", lastValue)
 				} else {
 					fmt.Printf("  %s: %s (was: %s)\n", k, v, cachedValue)
 				}
