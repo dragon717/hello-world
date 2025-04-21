@@ -1,0 +1,46 @@
+//client <---> scene
+syntax = "proto3";
+
+package cs;
+option csharp_namespace = "Starlight.Proto";
+
+
+enum ID {
+	ID_Zero = 0;
+
+	ID_S2C_OpObject = 1000;
+
+	// 角色基本信息
+	ID_C2S_GetUser = 10000;
+	ID_S2C_GetUser = 10001;
+
+
+	//大消息
+	ID_S2C_BASE_TOOLS_HUGE_MSG_PACK       = 99998;
+	ID_S2C_BASE_TOOLS_HUGE_MSG_SUB_PACK       = 99999;
+}
+
+message Zero {
+
+}
+
+message User {
+	uint64 id = 1;
+}
+
+message OpUser {
+	repeated User insert = 1;
+	repeated User update = 2;
+	repeated User delete = 3;
+}
+
+message S2C_OpObject {
+	OpUser opUser = 1;
+}
+
+message C2S_GetUser {
+	uint64 id = 1;
+}
+message S2C_GetUser {
+	User user = 1;
+}
