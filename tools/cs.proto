@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package tools;  // Protobuf 包名
 option go_package = "github.com/muniao/hello-world"; //这里决定生成的路径
-option csharp_namespace = "Cs.Proto";
+option csharp_namespace = "cs.proto";
 
 enum ID {
 	ID_Zero = 0;
