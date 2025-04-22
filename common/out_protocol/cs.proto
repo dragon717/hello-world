@@ -1,9 +1,9 @@
 //client <---> scene
 syntax = "proto3";
 
-package cs;
-option csharp_namespace = "Starlight.Proto";
-
+package tools;  // Protobuf 包名
+option go_package = "github.com/muniao/hello-world"; //这里决定生成的路径
+option csharp_namespace = "cs.proto";
 
 enum ID {
 	ID_Zero = 0;
