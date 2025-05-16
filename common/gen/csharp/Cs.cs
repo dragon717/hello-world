@@ -33,8 +33,10 @@ namespace cs.proto {
             "RF9aZXJvEAASFAoPSURfUzJDX09wT2JqZWN0EOgHEhMKDklEX0MyU19HZXRV",
             "c2VyEJBOEhMKDklEX1MyQ19HZXRVc2VyEJFOEiUKH0lEX1MyQ19CQVNFX1RP",
             "T0xTX0hVR0VfTVNHX1BBQ0sQno0GEikKI0lEX1MyQ19CQVNFX1RPT0xTX0hV",
-            "R0VfTVNHX1NVQl9QQUNLEJ+NBkIqWh1naXRodWIuY29tL211bmlhby9oZWxs",
-            "by13b3JsZKoCCGNzLnByb3RvYgZwcm90bzM="));
+            "R0VfTVNHX1NVQl9QQUNLEJ+NBjJACgtVc2VyU2VydmljZRIxCgdHZXRVc2Vy",
+            "EhIudG9vbHMuQzJTX0dldFVzZXIaEi50b29scy5TMkNfR2V0VXNlckIqWh1n",
+            "aXRodWIuY29tL211bmlhby9oZWxsby13b3JsZKoCCGNzLnByb3RvYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::cs.proto.ID), }, null, new pbr::GeneratedClrTypeInfo[] {
