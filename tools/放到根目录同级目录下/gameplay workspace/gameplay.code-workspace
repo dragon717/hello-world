@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../GunfireDungeon"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../hello-world"
+		}
+	],
+	"settings": {
+		"godotTools.editorPath.godot4": "d:\\Code\\github\\Godot_v4.4.1-stable_mono_win64\\Godot_v4.4.1-stable_mono_win64_console.exe"
+	}
+}
