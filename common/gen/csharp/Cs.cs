@@ -24,19 +24,18 @@ namespace cs.proto {
     static CsReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cghjcy5wcm90bxIFdG9vbHMiBgoEWmVybyISCgRVc2VyEgoKAmlkGAEgASgE",
-            "Il8KBk9wVXNlchIbCgZpbnNlcnQYASADKAsyCy50b29scy5Vc2VyEhsKBnVw",
-            "ZGF0ZRgCIAMoCzILLnRvb2xzLlVzZXISGwoGZGVsZXRlGAMgAygLMgsudG9v",
-            "bHMuVXNlciItCgxTMkNfT3BPYmplY3QSHQoGb3BVc2VyGAEgASgLMg0udG9v",
-            "bHMuT3BVc2VyIhkKC0MyU19HZXRVc2VyEgoKAmlkGAEgASgEIigKC1MyQ19H",
-            "ZXRVc2VyEhkKBHVzZXIYASABKAsyCy50b29scy5Vc2VyKqMBCgJJRBILCgdJ",
-            "RF9aZXJvEAASFAoPSURfUzJDX09wT2JqZWN0EOgHEhMKDklEX0MyU19HZXRV",
-            "c2VyEJBOEhMKDklEX1MyQ19HZXRVc2VyEJFOEiUKH0lEX1MyQ19CQVNFX1RP",
-            "T0xTX0hVR0VfTVNHX1BBQ0sQno0GEikKI0lEX1MyQ19CQVNFX1RPT0xTX0hV",
-            "R0VfTVNHX1NVQl9QQUNLEJ+NBjJACgtVc2VyU2VydmljZRIxCgdHZXRVc2Vy",
-            "EhIudG9vbHMuQzJTX0dldFVzZXIaEi50b29scy5TMkNfR2V0VXNlckIqWh1n",
-            "aXRodWIuY29tL211bmlhby9oZWxsby13b3JsZKoCCGNzLnByb3RvYgZwcm90",
-            "bzM="));
+            "Cghjcy5wcm90bxICY3MiBgoEWmVybyISCgRVc2VyEgoKAmlkGAEgASgEIlYK",
+            "Bk9wVXNlchIYCgZpbnNlcnQYASADKAsyCC5jcy5Vc2VyEhgKBnVwZGF0ZRgC",
+            "IAMoCzIILmNzLlVzZXISGAoGZGVsZXRlGAMgAygLMgguY3MuVXNlciIqCgxT",
+            "MkNfT3BPYmplY3QSGgoGb3BVc2VyGAEgASgLMgouY3MuT3BVc2VyIhkKC0My",
+            "U19HZXRVc2VyEgoKAmlkGAEgASgEIiUKC1MyQ19HZXRVc2VyEhYKBHVzZXIY",
+            "ASABKAsyCC5jcy5Vc2VyKqMBCgJJRBILCgdJRF9aZXJvEAASFAoPSURfUzJD",
+            "X09wT2JqZWN0EOgHEhMKDklEX0MyU19HZXRVc2VyEJBOEhMKDklEX1MyQ19H",
+            "ZXRVc2VyEJFOEiUKH0lEX1MyQ19CQVNFX1RPT0xTX0hVR0VfTVNHX1BBQ0sQ",
+            "no0GEikKI0lEX1MyQ19CQVNFX1RPT0xTX0hVR0VfTVNHX1NVQl9QQUNLEJ+N",
+            "BjI6CgtVc2VyU2VydmljZRIrCgdHZXRVc2VyEg8uY3MuQzJTX0dldFVzZXIa",
+            "Dy5jcy5TMkNfR2V0VXNlckIUWgdUZXN0L2NzqgIIY3MucHJvdG9iBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::cs.proto.ID), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -197,11 +196,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -216,11 +211,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -387,11 +378,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -410,11 +397,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -610,11 +593,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -641,11 +620,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -827,11 +802,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -853,11 +824,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1031,11 +998,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1054,11 +1017,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1232,11 +1191,7 @@ namespace cs.proto {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1258,11 +1213,7 @@ namespace cs.proto {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-      if ((tag & 7) == 4) {
-        // Abort on any end group tag.
-        return;
-      }
-      switch(tag) {
+        switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

@@ -7,7 +7,7 @@ REM 确保脚本在tools目录下执行
 cd /d %~dp0
 
 REM 1. 配置工具路径
-set PROTOC=protoc-30.2-win64\bin\protoc.exe
+set PROTOC=protoc-26.1-win64\bin\protoc.exe
 set GRPC_PLUGIN=grpc_csharp_plugin.exe
 set GO_PLUGIN=protoc-gen-go.exe
 set GO_GRPC_PLUGIN=protoc-gen-go-grpc.exe

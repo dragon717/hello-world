@@ -22,6 +22,11 @@ func main() {
 	WorldMap.AddEntity(NewEntityTree("浆果灌木", int32(rand.Intn(10000)), 1, 7, 7))
 
 	WorldMap.Gmap.Show()
+	// 启动终端监视器服务端口 
 	InitMonitorServer(":8088")
-	select {}
+
+	// 启动 gRPC 服务
+	go startGRPCServer()
+
+	select {} // 阻塞主线程，保持服务运行
 }

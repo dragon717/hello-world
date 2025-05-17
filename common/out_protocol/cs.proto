@@ -1,8 +1,8 @@
 //client <---> scene
 syntax = "proto3";
 
-package tools;  // Protobuf 包名
-option go_package = "github.com/muniao/hello-world"; //这里决定生成的路径
+package cs;  // Protobuf 包名
+option go_package = "Test/cs"; //这里决定生成的路径 根目录与go.mod保持一致
 option csharp_namespace = "cs.proto";
 
 service UserService {

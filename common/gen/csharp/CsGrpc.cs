@@ -12,7 +12,7 @@ using grpc = global::Grpc.Core;
 namespace cs.proto {
   public static partial class UserService
   {
-    static readonly string __ServiceName = "tools.UserService";
+    static readonly string __ServiceName = "cs.UserService";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -48,17 +48,17 @@ namespace cs.proto {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::cs.proto.C2S_GetUser> __Marshaller_tools_C2S_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_GetUser.Parser));
+    static readonly grpc::Marshaller<global::cs.proto.C2S_GetUser> __Marshaller_cs_C2S_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_GetUser.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::cs.proto.S2C_GetUser> __Marshaller_tools_S2C_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_GetUser.Parser));
+    static readonly grpc::Marshaller<global::cs.proto.S2C_GetUser> __Marshaller_cs_S2C_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_GetUser.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::cs.proto.C2S_GetUser, global::cs.proto.S2C_GetUser> __Method_GetUser = new grpc::Method<global::cs.proto.C2S_GetUser, global::cs.proto.S2C_GetUser>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetUser",
-        __Marshaller_tools_C2S_GetUser,
-        __Marshaller_tools_S2C_GetUser);
+        __Marshaller_cs_C2S_GetUser,
+        __Marshaller_cs_S2C_GetUser);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
