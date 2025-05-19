@@ -15,9 +15,47 @@ enum ID {
 	ID_S2C_OpObject = 1000;
 
 	// 角色基本信息
-	ID_C2S_GetUser = 10000;
-	ID_S2C_GetUser = 10001;
+	ID_C2S_GetUser = 10001;
+	ID_S2C_GetUser = 10002;
 
+	// 出生
+	ID_C2S_BORN       = 10101;
+	ID_S2C_BORN       = 10102;
+	// 死亡
+	ID_C2S_DEAD       = 10103;
+	ID_S2C_DEAD       = 10104;
+
+	// ---------------角色交互
+	// 移动
+	ID_C2S_MOVE       = 11001;
+	ID_S2C_MOVE       = 11002;
+
+	// 砍树
+	ID_C2S_CUT_DOWN_TREE			= 11011;
+	ID_S2C_CUT_DOWN_TREE			= 11012;
+	// 被砍伐
+	ID_C2S_BE_CUT_DOWN_TREE			= 11013;
+	ID_S2C_BE_CUT_DOWN_TREE			= 11014;
+
+	// 睡觉
+	ID_C2S_SLEEP       = 11021;
+	ID_S2C_SLEEP       = 11022;
+
+	// 吃东西
+	ID_C2S_EAT       = 11031;
+	ID_S2C_EAT       = 11032;
+
+	// 拾取
+	ID_C2S_PICK_UP       = 11041;
+	ID_S2C_PICK_UP       = 11042;
+
+	// 生长
+	ID_C2S_GROWTH       = 11051;
+	ID_S2C_GROWTH       = 11052;
+
+	// 合成工具
+	ID_C2S_COMPOSE_TOOLS       = 11061;
+	ID_S2C_COMPOSE_TOOLS       = 11062;
 
 	//大消息
 	ID_S2C_BASE_TOOLS_HUGE_MSG_PACK       = 99998;

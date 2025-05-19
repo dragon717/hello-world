@@ -205,6 +205,8 @@ func (e *Entity) ConsumerChan() {
 			for ty, num := range op.AwardList {
 				e.Bag[ty] += num
 			}
+			// 发送服务端执行结果给客户端渲染 todo
+
 			fmt.Println(op.ActionID)
 
 		case op := <-e.ActionChan:
