@@ -21,7 +21,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	UserService_GetUser_FullMethodName = "/cs.UserService/GetUser"
+	UserService_GetUser_FullMethodName   = "/cs.UserService/GetUser"
+	UserService_Born_FullMethodName      = "/cs.UserService/Born"
+	UserService_Dead_FullMethodName      = "/cs.UserService/Dead"
+	UserService_Move_FullMethodName      = "/cs.UserService/Move"
+	UserService_CutDown_FullMethodName   = "/cs.UserService/CutDown"
+	UserService_BeCutDown_FullMethodName = "/cs.UserService/BeCutDown"
+	UserService_Sleep_FullMethodName     = "/cs.UserService/Sleep"
+	UserService_Eat_FullMethodName       = "/cs.UserService/Eat"
+	UserService_PickUp_FullMethodName    = "/cs.UserService/PickUp"
+	UserService_Grow_FullMethodName      = "/cs.UserService/Grow"
+	UserService_Compose_FullMethodName   = "/cs.UserService/Compose"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -29,6 +39,16 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
 	GetUser(ctx context.Context, in *C2S_GetUser, opts ...grpc.CallOption) (*S2C_GetUser, error)
+	Born(ctx context.Context, in *C2S_BORN, opts ...grpc.CallOption) (*S2C_BORN, error)
+	Dead(ctx context.Context, in *C2S_DEAD, opts ...grpc.CallOption) (*S2C_DEAD, error)
+	Move(ctx context.Context, in *C2S_MOVE, opts ...grpc.CallOption) (*S2C_MOVE, error)
+	CutDown(ctx context.Context, in *C2S_CUT_DOWN_TREE, opts ...grpc.CallOption) (*S2C_CUT_DOWN_TREE, error)
+	BeCutDown(ctx context.Context, in *C2S_BE_CUT_DOWN_TREE, opts ...grpc.CallOption) (*S2C_BE_CUT_DOWN_TREE, error)
+	Sleep(ctx context.Context, in *C2S_SLEEP, opts ...grpc.CallOption) (*S2C_SLEEP, error)
+	Eat(ctx context.Context, in *C2S_EAT, opts ...grpc.CallOption) (*S2C_EAT, error)
+	PickUp(ctx context.Context, in *C2S_PICK_UP, opts ...grpc.CallOption) (*S2C_PICK_UP, error)
+	Grow(ctx context.Context, in *C2S_GROWTH, opts ...grpc.CallOption) (*S2C_GROWTH, error)
+	Compose(ctx context.Context, in *C2S_COMPOSE_TOOLS, opts ...grpc.CallOption) (*S2C_COMPOSE_TOOLS, error)
 }
 
 type userServiceClient struct {
@@ -49,11 +69,121 @@ func (c *userServiceClient) GetUser(ctx context.Context, in *C2S_GetUser, opts .
 	return out, nil
 }
 
+func (c *userServiceClient) Born(ctx context.Context, in *C2S_BORN, opts ...grpc.CallOption) (*S2C_BORN, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_BORN)
+	err := c.cc.Invoke(ctx, UserService_Born_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Dead(ctx context.Context, in *C2S_DEAD, opts ...grpc.CallOption) (*S2C_DEAD, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_DEAD)
+	err := c.cc.Invoke(ctx, UserService_Dead_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Move(ctx context.Context, in *C2S_MOVE, opts ...grpc.CallOption) (*S2C_MOVE, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_MOVE)
+	err := c.cc.Invoke(ctx, UserService_Move_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) CutDown(ctx context.Context, in *C2S_CUT_DOWN_TREE, opts ...grpc.CallOption) (*S2C_CUT_DOWN_TREE, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_CUT_DOWN_TREE)
+	err := c.cc.Invoke(ctx, UserService_CutDown_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) BeCutDown(ctx context.Context, in *C2S_BE_CUT_DOWN_TREE, opts ...grpc.CallOption) (*S2C_BE_CUT_DOWN_TREE, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_BE_CUT_DOWN_TREE)
+	err := c.cc.Invoke(ctx, UserService_BeCutDown_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Sleep(ctx context.Context, in *C2S_SLEEP, opts ...grpc.CallOption) (*S2C_SLEEP, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_SLEEP)
+	err := c.cc.Invoke(ctx, UserService_Sleep_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Eat(ctx context.Context, in *C2S_EAT, opts ...grpc.CallOption) (*S2C_EAT, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_EAT)
+	err := c.cc.Invoke(ctx, UserService_Eat_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) PickUp(ctx context.Context, in *C2S_PICK_UP, opts ...grpc.CallOption) (*S2C_PICK_UP, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_PICK_UP)
+	err := c.cc.Invoke(ctx, UserService_PickUp_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Grow(ctx context.Context, in *C2S_GROWTH, opts ...grpc.CallOption) (*S2C_GROWTH, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_GROWTH)
+	err := c.cc.Invoke(ctx, UserService_Grow_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userServiceClient) Compose(ctx context.Context, in *C2S_COMPOSE_TOOLS, opts ...grpc.CallOption) (*S2C_COMPOSE_TOOLS, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(S2C_COMPOSE_TOOLS)
+	err := c.cc.Invoke(ctx, UserService_Compose_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility.
 type UserServiceServer interface {
 	GetUser(context.Context, *C2S_GetUser) (*S2C_GetUser, error)
+	Born(context.Context, *C2S_BORN) (*S2C_BORN, error)
+	Dead(context.Context, *C2S_DEAD) (*S2C_DEAD, error)
+	Move(context.Context, *C2S_MOVE) (*S2C_MOVE, error)
+	CutDown(context.Context, *C2S_CUT_DOWN_TREE) (*S2C_CUT_DOWN_TREE, error)
+	BeCutDown(context.Context, *C2S_BE_CUT_DOWN_TREE) (*S2C_BE_CUT_DOWN_TREE, error)
+	Sleep(context.Context, *C2S_SLEEP) (*S2C_SLEEP, error)
+	Eat(context.Context, *C2S_EAT) (*S2C_EAT, error)
+	PickUp(context.Context, *C2S_PICK_UP) (*S2C_PICK_UP, error)
+	Grow(context.Context, *C2S_GROWTH) (*S2C_GROWTH, error)
+	Compose(context.Context, *C2S_COMPOSE_TOOLS) (*S2C_COMPOSE_TOOLS, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -66,6 +196,36 @@ type UnimplementedUserServiceServer struct{}
 
 func (UnimplementedUserServiceServer) GetUser(context.Context, *C2S_GetUser) (*S2C_GetUser, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedUserServiceServer) Born(context.Context, *C2S_BORN) (*S2C_BORN, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Born not implemented")
+}
+func (UnimplementedUserServiceServer) Dead(context.Context, *C2S_DEAD) (*S2C_DEAD, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Dead not implemented")
+}
+func (UnimplementedUserServiceServer) Move(context.Context, *C2S_MOVE) (*S2C_MOVE, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Move not implemented")
+}
+func (UnimplementedUserServiceServer) CutDown(context.Context, *C2S_CUT_DOWN_TREE) (*S2C_CUT_DOWN_TREE, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CutDown not implemented")
+}
+func (UnimplementedUserServiceServer) BeCutDown(context.Context, *C2S_BE_CUT_DOWN_TREE) (*S2C_BE_CUT_DOWN_TREE, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BeCutDown not implemented")
+}
+func (UnimplementedUserServiceServer) Sleep(context.Context, *C2S_SLEEP) (*S2C_SLEEP, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Sleep not implemented")
+}
+func (UnimplementedUserServiceServer) Eat(context.Context, *C2S_EAT) (*S2C_EAT, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Eat not implemented")
+}
+func (UnimplementedUserServiceServer) PickUp(context.Context, *C2S_PICK_UP) (*S2C_PICK_UP, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PickUp not implemented")
+}
+func (UnimplementedUserServiceServer) Grow(context.Context, *C2S_GROWTH) (*S2C_GROWTH, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Grow not implemented")
+}
+func (UnimplementedUserServiceServer) Compose(context.Context, *C2S_COMPOSE_TOOLS) (*S2C_COMPOSE_TOOLS, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Compose not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 func (UnimplementedUserServiceServer) testEmbeddedByValue()                     {}
@@ -106,6 +266,186 @@ func _UserService_GetUser_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_Born_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_BORN)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Born(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Born_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Born(ctx, req.(*C2S_BORN))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Dead_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_DEAD)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Dead(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Dead_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Dead(ctx, req.(*C2S_DEAD))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Move_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_MOVE)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Move(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Move_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Move(ctx, req.(*C2S_MOVE))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_CutDown_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_CUT_DOWN_TREE)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).CutDown(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_CutDown_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).CutDown(ctx, req.(*C2S_CUT_DOWN_TREE))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_BeCutDown_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_BE_CUT_DOWN_TREE)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).BeCutDown(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_BeCutDown_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).BeCutDown(ctx, req.(*C2S_BE_CUT_DOWN_TREE))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Sleep_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_SLEEP)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Sleep(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Sleep_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Sleep(ctx, req.(*C2S_SLEEP))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Eat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_EAT)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Eat(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Eat_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Eat(ctx, req.(*C2S_EAT))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_PickUp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_PICK_UP)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).PickUp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_PickUp_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).PickUp(ctx, req.(*C2S_PICK_UP))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Grow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_GROWTH)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Grow(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Grow_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Grow(ctx, req.(*C2S_GROWTH))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserService_Compose_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(C2S_COMPOSE_TOOLS)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Compose(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_Compose_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Compose(ctx, req.(*C2S_COMPOSE_TOOLS))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -116,6 +456,46 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _UserService_GetUser_Handler,
+		},
+		{
+			MethodName: "Born",
+			Handler:    _UserService_Born_Handler,
+		},
+		{
+			MethodName: "Dead",
+			Handler:    _UserService_Dead_Handler,
+		},
+		{
+			MethodName: "Move",
+			Handler:    _UserService_Move_Handler,
+		},
+		{
+			MethodName: "CutDown",
+			Handler:    _UserService_CutDown_Handler,
+		},
+		{
+			MethodName: "BeCutDown",
+			Handler:    _UserService_BeCutDown_Handler,
+		},
+		{
+			MethodName: "Sleep",
+			Handler:    _UserService_Sleep_Handler,
+		},
+		{
+			MethodName: "Eat",
+			Handler:    _UserService_Eat_Handler,
+		},
+		{
+			MethodName: "PickUp",
+			Handler:    _UserService_PickUp_Handler,
+		},
+		{
+			MethodName: "Grow",
+			Handler:    _UserService_Grow_Handler,
+		},
+		{
+			MethodName: "Compose",
+			Handler:    _UserService_Compose_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

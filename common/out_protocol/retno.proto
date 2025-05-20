@@ -1,0 +1,11 @@
+//client <---> scene
+syntax = "proto3";
+
+package retno;  // Protobuf 包名
+option go_package = "Test/retno"; //这里决定生成的路径 根目录与go.mod保持一致
+option csharp_namespace = "retno.proto";
+
+enum ErrorCode {
+    UNKNOW_ERROR = 0;
+    OK = 1;
+}

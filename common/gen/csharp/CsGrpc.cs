@@ -51,6 +51,46 @@ namespace cs.proto {
     static readonly grpc::Marshaller<global::cs.proto.C2S_GetUser> __Marshaller_cs_C2S_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_GetUser.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::cs.proto.S2C_GetUser> __Marshaller_cs_S2C_GetUser = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_GetUser.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_BORN> __Marshaller_cs_C2S_BORN = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_BORN.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_BORN> __Marshaller_cs_S2C_BORN = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_BORN.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_DEAD> __Marshaller_cs_C2S_DEAD = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_DEAD.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_DEAD> __Marshaller_cs_S2C_DEAD = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_DEAD.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_MOVE> __Marshaller_cs_C2S_MOVE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_MOVE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_MOVE> __Marshaller_cs_S2C_MOVE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_MOVE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_CUT_DOWN_TREE> __Marshaller_cs_C2S_CUT_DOWN_TREE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_CUT_DOWN_TREE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_CUT_DOWN_TREE> __Marshaller_cs_S2C_CUT_DOWN_TREE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_CUT_DOWN_TREE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_BE_CUT_DOWN_TREE> __Marshaller_cs_C2S_BE_CUT_DOWN_TREE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_BE_CUT_DOWN_TREE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_BE_CUT_DOWN_TREE> __Marshaller_cs_S2C_BE_CUT_DOWN_TREE = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_BE_CUT_DOWN_TREE.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_SLEEP> __Marshaller_cs_C2S_SLEEP = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_SLEEP.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_SLEEP> __Marshaller_cs_S2C_SLEEP = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_SLEEP.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_EAT> __Marshaller_cs_C2S_EAT = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_EAT.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_EAT> __Marshaller_cs_S2C_EAT = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_EAT.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_PICK_UP> __Marshaller_cs_C2S_PICK_UP = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_PICK_UP.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_PICK_UP> __Marshaller_cs_S2C_PICK_UP = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_PICK_UP.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_GROWTH> __Marshaller_cs_C2S_GROWTH = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_GROWTH.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_GROWTH> __Marshaller_cs_S2C_GROWTH = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_GROWTH.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.C2S_COMPOSE_TOOLS> __Marshaller_cs_C2S_COMPOSE_TOOLS = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.C2S_COMPOSE_TOOLS.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::cs.proto.S2C_COMPOSE_TOOLS> __Marshaller_cs_S2C_COMPOSE_TOOLS = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::cs.proto.S2C_COMPOSE_TOOLS.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::cs.proto.C2S_GetUser, global::cs.proto.S2C_GetUser> __Method_GetUser = new grpc::Method<global::cs.proto.C2S_GetUser, global::cs.proto.S2C_GetUser>(
@@ -59,6 +99,86 @@ namespace cs.proto {
         "GetUser",
         __Marshaller_cs_C2S_GetUser,
         __Marshaller_cs_S2C_GetUser);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_BORN, global::cs.proto.S2C_BORN> __Method_Born = new grpc::Method<global::cs.proto.C2S_BORN, global::cs.proto.S2C_BORN>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Born",
+        __Marshaller_cs_C2S_BORN,
+        __Marshaller_cs_S2C_BORN);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_DEAD, global::cs.proto.S2C_DEAD> __Method_Dead = new grpc::Method<global::cs.proto.C2S_DEAD, global::cs.proto.S2C_DEAD>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Dead",
+        __Marshaller_cs_C2S_DEAD,
+        __Marshaller_cs_S2C_DEAD);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_MOVE, global::cs.proto.S2C_MOVE> __Method_Move = new grpc::Method<global::cs.proto.C2S_MOVE, global::cs.proto.S2C_MOVE>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Move",
+        __Marshaller_cs_C2S_MOVE,
+        __Marshaller_cs_S2C_MOVE);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_CUT_DOWN_TREE, global::cs.proto.S2C_CUT_DOWN_TREE> __Method_CutDown = new grpc::Method<global::cs.proto.C2S_CUT_DOWN_TREE, global::cs.proto.S2C_CUT_DOWN_TREE>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CutDown",
+        __Marshaller_cs_C2S_CUT_DOWN_TREE,
+        __Marshaller_cs_S2C_CUT_DOWN_TREE);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_BE_CUT_DOWN_TREE, global::cs.proto.S2C_BE_CUT_DOWN_TREE> __Method_BeCutDown = new grpc::Method<global::cs.proto.C2S_BE_CUT_DOWN_TREE, global::cs.proto.S2C_BE_CUT_DOWN_TREE>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "BeCutDown",
+        __Marshaller_cs_C2S_BE_CUT_DOWN_TREE,
+        __Marshaller_cs_S2C_BE_CUT_DOWN_TREE);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_SLEEP, global::cs.proto.S2C_SLEEP> __Method_Sleep = new grpc::Method<global::cs.proto.C2S_SLEEP, global::cs.proto.S2C_SLEEP>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Sleep",
+        __Marshaller_cs_C2S_SLEEP,
+        __Marshaller_cs_S2C_SLEEP);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_EAT, global::cs.proto.S2C_EAT> __Method_Eat = new grpc::Method<global::cs.proto.C2S_EAT, global::cs.proto.S2C_EAT>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Eat",
+        __Marshaller_cs_C2S_EAT,
+        __Marshaller_cs_S2C_EAT);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_PICK_UP, global::cs.proto.S2C_PICK_UP> __Method_PickUp = new grpc::Method<global::cs.proto.C2S_PICK_UP, global::cs.proto.S2C_PICK_UP>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "PickUp",
+        __Marshaller_cs_C2S_PICK_UP,
+        __Marshaller_cs_S2C_PICK_UP);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_GROWTH, global::cs.proto.S2C_GROWTH> __Method_Grow = new grpc::Method<global::cs.proto.C2S_GROWTH, global::cs.proto.S2C_GROWTH>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Grow",
+        __Marshaller_cs_C2S_GROWTH,
+        __Marshaller_cs_S2C_GROWTH);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::cs.proto.C2S_COMPOSE_TOOLS, global::cs.proto.S2C_COMPOSE_TOOLS> __Method_Compose = new grpc::Method<global::cs.proto.C2S_COMPOSE_TOOLS, global::cs.proto.S2C_COMPOSE_TOOLS>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Compose",
+        __Marshaller_cs_C2S_COMPOSE_TOOLS,
+        __Marshaller_cs_S2C_COMPOSE_TOOLS);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -70,8 +190,133 @@ namespace cs.proto {
     [grpc::BindServiceMethod(typeof(UserService), "BindService")]
     public abstract partial class UserServiceBase
     {
+      /// <summary>
+      /// 获取用户信息
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_GetUser> GetUser(global::cs.proto.C2S_GetUser request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_BORN> Born(global::cs.proto.C2S_BORN request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 角色死亡
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_DEAD> Dead(global::cs.proto.C2S_DEAD request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 角色移动
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_MOVE> Move(global::cs.proto.C2S_MOVE request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 砍树
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_CUT_DOWN_TREE> CutDown(global::cs.proto.C2S_CUT_DOWN_TREE request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 被砍伐
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_BE_CUT_DOWN_TREE> BeCutDown(global::cs.proto.C2S_BE_CUT_DOWN_TREE request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 睡觉
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_SLEEP> Sleep(global::cs.proto.C2S_SLEEP request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 吃东西
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_EAT> Eat(global::cs.proto.C2S_EAT request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 拾取
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_PICK_UP> PickUp(global::cs.proto.C2S_PICK_UP request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 生长
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_GROWTH> Grow(global::cs.proto.C2S_GROWTH request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 合成
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::cs.proto.S2C_COMPOSE_TOOLS> Compose(global::cs.proto.C2S_COMPOSE_TOOLS request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -105,25 +350,529 @@ namespace cs.proto {
       {
       }
 
+      /// <summary>
+      /// 获取用户信息
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::cs.proto.S2C_GetUser GetUser(global::cs.proto.C2S_GetUser request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetUser(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// 获取用户信息
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::cs.proto.S2C_GetUser GetUser(global::cs.proto.C2S_GetUser request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_GetUser, null, options, request);
       }
+      /// <summary>
+      /// 获取用户信息
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_GetUser> GetUserAsync(global::cs.proto.C2S_GetUser request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetUserAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// 获取用户信息
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_GetUser> GetUserAsync(global::cs.proto.C2S_GetUser request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetUser, null, options, request);
+      }
+      /// <summary>
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_BORN Born(global::cs.proto.C2S_BORN request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Born(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_BORN Born(global::cs.proto.C2S_BORN request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Born, null, options, request);
+      }
+      /// <summary>
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_BORN> BornAsync(global::cs.proto.C2S_BORN request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return BornAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_BORN> BornAsync(global::cs.proto.C2S_BORN request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Born, null, options, request);
+      }
+      /// <summary>
+      /// 角色死亡
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_DEAD Dead(global::cs.proto.C2S_DEAD request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Dead(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 角色死亡
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_DEAD Dead(global::cs.proto.C2S_DEAD request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Dead, null, options, request);
+      }
+      /// <summary>
+      /// 角色死亡
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_DEAD> DeadAsync(global::cs.proto.C2S_DEAD request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeadAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 角色死亡
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_DEAD> DeadAsync(global::cs.proto.C2S_DEAD request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Dead, null, options, request);
+      }
+      /// <summary>
+      /// 角色移动
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_MOVE Move(global::cs.proto.C2S_MOVE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Move(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 角色移动
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_MOVE Move(global::cs.proto.C2S_MOVE request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Move, null, options, request);
+      }
+      /// <summary>
+      /// 角色移动
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_MOVE> MoveAsync(global::cs.proto.C2S_MOVE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MoveAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 角色移动
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_MOVE> MoveAsync(global::cs.proto.C2S_MOVE request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Move, null, options, request);
+      }
+      /// <summary>
+      /// 砍树
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_CUT_DOWN_TREE CutDown(global::cs.proto.C2S_CUT_DOWN_TREE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CutDown(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 砍树
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_CUT_DOWN_TREE CutDown(global::cs.proto.C2S_CUT_DOWN_TREE request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CutDown, null, options, request);
+      }
+      /// <summary>
+      /// 砍树
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_CUT_DOWN_TREE> CutDownAsync(global::cs.proto.C2S_CUT_DOWN_TREE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CutDownAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 砍树
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_CUT_DOWN_TREE> CutDownAsync(global::cs.proto.C2S_CUT_DOWN_TREE request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CutDown, null, options, request);
+      }
+      /// <summary>
+      /// 被砍伐
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_BE_CUT_DOWN_TREE BeCutDown(global::cs.proto.C2S_BE_CUT_DOWN_TREE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return BeCutDown(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 被砍伐
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_BE_CUT_DOWN_TREE BeCutDown(global::cs.proto.C2S_BE_CUT_DOWN_TREE request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_BeCutDown, null, options, request);
+      }
+      /// <summary>
+      /// 被砍伐
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_BE_CUT_DOWN_TREE> BeCutDownAsync(global::cs.proto.C2S_BE_CUT_DOWN_TREE request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return BeCutDownAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 被砍伐
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_BE_CUT_DOWN_TREE> BeCutDownAsync(global::cs.proto.C2S_BE_CUT_DOWN_TREE request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_BeCutDown, null, options, request);
+      }
+      /// <summary>
+      /// 睡觉
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_SLEEP Sleep(global::cs.proto.C2S_SLEEP request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Sleep(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 睡觉
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_SLEEP Sleep(global::cs.proto.C2S_SLEEP request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Sleep, null, options, request);
+      }
+      /// <summary>
+      /// 睡觉
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_SLEEP> SleepAsync(global::cs.proto.C2S_SLEEP request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SleepAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 睡觉
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_SLEEP> SleepAsync(global::cs.proto.C2S_SLEEP request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Sleep, null, options, request);
+      }
+      /// <summary>
+      /// 吃东西
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_EAT Eat(global::cs.proto.C2S_EAT request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Eat(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 吃东西
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_EAT Eat(global::cs.proto.C2S_EAT request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Eat, null, options, request);
+      }
+      /// <summary>
+      /// 吃东西
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_EAT> EatAsync(global::cs.proto.C2S_EAT request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return EatAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 吃东西
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_EAT> EatAsync(global::cs.proto.C2S_EAT request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Eat, null, options, request);
+      }
+      /// <summary>
+      /// 拾取
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_PICK_UP PickUp(global::cs.proto.C2S_PICK_UP request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PickUp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 拾取
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_PICK_UP PickUp(global::cs.proto.C2S_PICK_UP request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_PickUp, null, options, request);
+      }
+      /// <summary>
+      /// 拾取
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_PICK_UP> PickUpAsync(global::cs.proto.C2S_PICK_UP request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PickUpAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 拾取
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_PICK_UP> PickUpAsync(global::cs.proto.C2S_PICK_UP request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_PickUp, null, options, request);
+      }
+      /// <summary>
+      /// 生长
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_GROWTH Grow(global::cs.proto.C2S_GROWTH request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Grow(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 生长
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_GROWTH Grow(global::cs.proto.C2S_GROWTH request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Grow, null, options, request);
+      }
+      /// <summary>
+      /// 生长
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_GROWTH> GrowAsync(global::cs.proto.C2S_GROWTH request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GrowAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 生长
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_GROWTH> GrowAsync(global::cs.proto.C2S_GROWTH request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Grow, null, options, request);
+      }
+      /// <summary>
+      /// 合成
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_COMPOSE_TOOLS Compose(global::cs.proto.C2S_COMPOSE_TOOLS request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Compose(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 合成
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::cs.proto.S2C_COMPOSE_TOOLS Compose(global::cs.proto.C2S_COMPOSE_TOOLS request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Compose, null, options, request);
+      }
+      /// <summary>
+      /// 合成
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_COMPOSE_TOOLS> ComposeAsync(global::cs.proto.C2S_COMPOSE_TOOLS request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ComposeAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 合成
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::cs.proto.S2C_COMPOSE_TOOLS> ComposeAsync(global::cs.proto.C2S_COMPOSE_TOOLS request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Compose, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -139,7 +888,17 @@ namespace cs.proto {
     public static grpc::ServerServiceDefinition BindService(UserServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetUser, serviceImpl.GetUser).Build();
+          .AddMethod(__Method_GetUser, serviceImpl.GetUser)
+          .AddMethod(__Method_Born, serviceImpl.Born)
+          .AddMethod(__Method_Dead, serviceImpl.Dead)
+          .AddMethod(__Method_Move, serviceImpl.Move)
+          .AddMethod(__Method_CutDown, serviceImpl.CutDown)
+          .AddMethod(__Method_BeCutDown, serviceImpl.BeCutDown)
+          .AddMethod(__Method_Sleep, serviceImpl.Sleep)
+          .AddMethod(__Method_Eat, serviceImpl.Eat)
+          .AddMethod(__Method_PickUp, serviceImpl.PickUp)
+          .AddMethod(__Method_Grow, serviceImpl.Grow)
+          .AddMethod(__Method_Compose, serviceImpl.Compose).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -150,6 +909,16 @@ namespace cs.proto {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UserServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_GetUser, global::cs.proto.S2C_GetUser>(serviceImpl.GetUser));
+      serviceBinder.AddMethod(__Method_Born, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_BORN, global::cs.proto.S2C_BORN>(serviceImpl.Born));
+      serviceBinder.AddMethod(__Method_Dead, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_DEAD, global::cs.proto.S2C_DEAD>(serviceImpl.Dead));
+      serviceBinder.AddMethod(__Method_Move, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_MOVE, global::cs.proto.S2C_MOVE>(serviceImpl.Move));
+      serviceBinder.AddMethod(__Method_CutDown, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_CUT_DOWN_TREE, global::cs.proto.S2C_CUT_DOWN_TREE>(serviceImpl.CutDown));
+      serviceBinder.AddMethod(__Method_BeCutDown, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_BE_CUT_DOWN_TREE, global::cs.proto.S2C_BE_CUT_DOWN_TREE>(serviceImpl.BeCutDown));
+      serviceBinder.AddMethod(__Method_Sleep, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_SLEEP, global::cs.proto.S2C_SLEEP>(serviceImpl.Sleep));
+      serviceBinder.AddMethod(__Method_Eat, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_EAT, global::cs.proto.S2C_EAT>(serviceImpl.Eat));
+      serviceBinder.AddMethod(__Method_PickUp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_PICK_UP, global::cs.proto.S2C_PICK_UP>(serviceImpl.PickUp));
+      serviceBinder.AddMethod(__Method_Grow, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_GROWTH, global::cs.proto.S2C_GROWTH>(serviceImpl.Grow));
+      serviceBinder.AddMethod(__Method_Compose, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::cs.proto.C2S_COMPOSE_TOOLS, global::cs.proto.S2C_COMPOSE_TOOLS>(serviceImpl.Compose));
     }
 
   }
