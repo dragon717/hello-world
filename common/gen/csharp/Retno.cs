@@ -24,19 +24,18 @@ namespace retno.proto {
     static RetnoReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CgtyZXRuby5wcm90bxIFcmV0bm8qJQoJRXJyb3JDb2RlEhAKDFVOS05PV19F",
-            "UlJPUhAAEgYKAk9LEAFCGloKVGVzdC9yZXRub6oCC3JldG5vLnByb3RvYgZw",
-            "cm90bzM="));
+            "CgtyZXRuby5wcm90bxIFcmV0bm8qIAoDUkVUEhEKDVVOS05PV05fRVJST1IQ",
+            "ABIGCgJPSxABQhpaClRlc3QvcmV0bm+qAgtyZXRuby5wcm90b2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::retno.proto.ErrorCode), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::retno.proto.RET), }, null, null));
     }
     #endregion
 
   }
   #region Enums
-  public enum ErrorCode {
-    [pbr::OriginalName("UNKNOW_ERROR")] UnknowError = 0,
+  public enum RET {
+    [pbr::OriginalName("UNKNOWN_ERROR")] UnknownError = 0,
     [pbr::OriginalName("OK")] Ok = 1,
   }
 

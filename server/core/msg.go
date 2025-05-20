@@ -2,6 +2,7 @@ package main
 
 import (
 	"Test/common"
+	"Test/protocol/retno"
 	"fmt"
 )
 
@@ -49,9 +50,9 @@ type Position struct {
 }
 
 type ResultMsg struct {
-	ActionID  uint32 `json:"action"`
-	Ret       int    `json:"ret"`
-	Result    string `json:"result"`
+	ActionID  uint32    `json:"action"`
+	Ret       retno.RET `json:"ret"`
+	Result    string    `json:"result"`
 	AwardList map[uint32]uint32
 }
 

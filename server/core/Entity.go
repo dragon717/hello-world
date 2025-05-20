@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Test/protocol/cs"
 	"encoding/json"
 	"fmt"
 	"slices"
@@ -205,7 +206,8 @@ func (e *Entity) ConsumerChan() {
 			for ty, num := range op.AwardList {
 				e.Bag[ty] += num
 			}
-			// 发送服务端执行结果给客户端渲染 todo
+			// 通知客户端
+			e.NotifyClient(op)
 
 			fmt.Println(op.ActionID)
 
@@ -215,6 +217,21 @@ func (e *Entity) ConsumerChan() {
 			} else {
 				fmt.Println(e.Name, "非法操作", op.Action)
 			}
+		}
+	}
+}
+
+// 通知客户端（推送变更消息）
+func (e *Entity) NotifyClient(op *ResultMsg) {
+	userID := uint64(e.Id)
+	resp := &cs.NotifyResp{
+		Ret:      uint32(op.Ret),
+		UserId:   userID,
+		JsonData: nil,
+	}
+	if streamVal, ok := notifyStreams.Load(userID); ok {
+		if stream, ok := streamVal.(cs.UserService_NotifyStreamServer); ok {
+			_ = stream.Send(resp)
 		}
 	}
 }

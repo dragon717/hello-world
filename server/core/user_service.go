@@ -1,10 +1,11 @@
 package main
 
 import (
-	cs "Test/protocol"
+	"Test/protocol/cs"
 	"context"
 	"log"
 	"net"
+	"sync"
 
 	"google.golang.org/grpc"
 )
@@ -18,6 +19,9 @@ type userService struct {
 	cs.UnimplementedUserServiceServer
 }
 
+// 全局保存所有活跃的NotifyStream连接
+var notifyStreams sync.Map // key: user_id, value: cs.UserService_NotifyStreamServer
+
 func (s *userService) GetUser(ctx context.Context, req *cs.C2S_GetUser) (*cs.S2C_GetUser, error) {
 	log.Printf("Received request for user ID: %d", req.Id)
 	user := &cs.User{
@@ -25,6 +29,24 @@ func (s *userService) GetUser(ctx context.Context, req *cs.C2S_GetUser) (*cs.S2C
 		// 其他字段填充逻辑
 	}
 	return &cs.S2C_GetUser{User: user}, nil
+}
+
+func (s *userService) NotifyStream(stream cs.UserService_NotifyStreamServer) error {
+	var userID uint64
+	for {
+		req, err := stream.Recv()
+		if err != nil {
+			log.Printf("NotifyStream Recv error: %v", err)
+			if userID != 0 {
+				notifyStreams.Delete(userID)
+			}
+			return err
+		}
+		userID = req.GetUserId()
+		notifyStreams.Store(userID, stream)
+		log.Printf("NotifyStream connected: user_id=%d", userID)
+		// 可以处理客户端发来的消息（如心跳等）
+	}
 }
 
 func startGRPCServer() {

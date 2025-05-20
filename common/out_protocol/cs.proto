@@ -6,20 +6,10 @@ option go_package = "Test/cs"; //这里决定生成的路径 根目录与go.mod�
 option csharp_namespace = "cs.proto";
 
 service UserService {
-  rpc GetUser (C2S_GetUser) returns (S2C_GetUser); // 获取用户信息
-  //
-  rpc Born (C2S_BORN) returns (S2C_BORN); // 角色出生
-  rpc Dead (C2S_DEAD) returns (S2C_DEAD); // 角色死亡
-  rpc Move (C2S_MOVE) returns (S2C_MOVE); // 角色移动
-  rpc CutDown (C2S_CUT_DOWN_TREE) returns (S2C_CUT_DOWN_TREE); // 砍树
-  rpc BeCutDown (C2S_BE_CUT_DOWN_TREE) returns (S2C_BE_CUT_DOWN_TREE); // 被砍伐
-  rpc Sleep (C2S_SLEEP) returns (S2C_SLEEP); // 睡觉
-  rpc Eat (C2S_EAT) returns (S2C_EAT); // 吃东西
-  rpc PickUp (C2S_PICK_UP) returns (S2C_PICK_UP); // 拾取
-  rpc Grow (C2S_GROWTH) returns (S2C_GROWTH); // 生长
-  rpc Compose (C2S_COMPOSE_TOOLS) returns (S2C_COMPOSE_TOOLS); // 合成
-  // 新增双向流式通知接口
-  rpc NotifyStream (stream NotifyReq) returns (stream NotifyResp);
+	rpc GetUser (C2S_GetUser) returns (S2C_GetUser); // 获取用户信息
+
+	// 双向流式通知接口
+	rpc NotifyStream (stream NotifyReq) returns (stream NotifyResp);
 }
 
 enum ID {
@@ -30,45 +20,6 @@ enum ID {
 	// 角色基本信息
 	ID_C2S_GetUser = 10001;
 	ID_S2C_GetUser = 10002;
-
-	// 出生
-	ID_C2S_BORN       = 10101;
-	ID_S2C_BORN       = 10102;
-	// 死亡
-	ID_C2S_DEAD       = 10103;
-	ID_S2C_DEAD       = 10104;
-
-	// ---------------角色交互
-	// 移动
-	ID_C2S_MOVE       = 11001;
-	ID_S2C_MOVE       = 11002;
-
-	// 砍树
-	ID_C2S_CUT_DOWN_TREE			= 11011;
-	ID_S2C_CUT_DOWN_TREE			= 11012;
-	// 被砍伐
-	ID_C2S_BE_CUT_DOWN_TREE			= 11013;
-	ID_S2C_BE_CUT_DOWN_TREE			= 11014;
-
-	// 睡觉
-	ID_C2S_SLEEP       = 11021;
-	ID_S2C_SLEEP       = 11022;
-
-	// 吃东西
-	ID_C2S_EAT       = 11031;
-	ID_S2C_EAT       = 11032;
-
-	// 拾取
-	ID_C2S_PICK_UP       = 11041;
-	ID_S2C_PICK_UP       = 11042;
-
-	// 生长
-	ID_C2S_GROWTH       = 11051;
-	ID_S2C_GROWTH       = 11052;
-
-	// 合成工具
-	ID_C2S_COMPOSE_TOOLS       = 11061;
-	ID_S2C_COMPOSE_TOOLS       = 11062;
 
 	//大消息
 	ID_S2C_BASE_TOOLS_HUGE_MSG_PACK       = 99998;
@@ -89,13 +40,6 @@ message OpUser {
 	repeated User delete = 3;
 }
 
-message Item {
-	uint64 id = 1; // 唯一id,=0则无唯一
-	uint32 type = 2;
-	uint32 value = 3;
-	uint32 size = 4;
-}
-
 message S2C_OpObject {
 	OpUser opUser = 1;
 }
@@ -109,132 +53,14 @@ message S2C_GetUser {
 	User user = 2;
 }
 
-// 出生
-message C2S_BORN {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message S2C_BORN {
-	uint32 ret = 1;
-	User user = 2;
-}
-	
-// 死亡
-message C2S_DEAD {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message S2C_DEAD {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message C2S_MOVE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	float x = 3;
-	float y = 4;
-}
-
-message S2C_MOVE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	float x = 3;
-	float y = 4;
-}
-
-message C2S_CUT_DOWN_TREE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	uint64 treeId = 3;
-}
-
-message S2C_CUT_DOWN_TREE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	uint64 treeId = 3;
-}
-
-message C2S_BE_CUT_DOWN_TREE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	uint64 treeId = 3;
-}
-
-message S2C_BE_CUT_DOWN_TREE {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	uint64 treeId = 3;
-}
-
-message C2S_SLEEP {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message S2C_SLEEP {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message C2S_EAT {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message S2C_EAT {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message C2S_PICK_UP {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	repeated Item itemList = 3;
-}
-
-message S2C_PICK_UP {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	repeated Item itemList = 3;
-}
-
-message C2S_GROWTH {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message S2C_GROWTH {
-	uint32 ret = 1;
-	uint64 userId = 2;
-}
-
-message C2S_COMPOSE_TOOLS {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	repeated Item needItem = 3;
-	repeated Item resultItem = 4;
-}
-
-message S2C_COMPOSE_TOOLS {
-	uint32 ret = 1;
-	uint64 userId = 2;
-	repeated Item needItem = 3;
-	repeated Item resultItem = 4;
-}
-
-// 通知请求
 message NotifyReq {
-  uint64 user_id = 1;
-  string client_msg = 2; // 客户端可选发消息
+	uint32 ret = 1;
+	uint64 userId = 2;
+	map<string, string> jsonData = 3;  // 键值对形式的动态数据
 }
 
-// 通知响应
 message NotifyResp {
-  uint64 user_id = 1;
-  string type = 2; // 变更类型，如hp_change、pos_change等
-  string msg = 3;  // 变更内容
-  bytes data = 4;  // 可选二进制数据
+	uint32 ret = 1;
+	uint64 userId = 2;
+ 	map<string, string> jsonData = 3;  // 键值对形式的动态数据
 }

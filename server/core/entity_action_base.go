@@ -1,6 +1,7 @@
 package main
 
 import (
+	"Test/protocol/retno"
 	"fmt"
 	"math/rand"
 )
@@ -44,13 +45,13 @@ func BeActionCuttingDownTrees(op *ActionMsg, u EntityInterface) {
 		Time:       WorldMap.Gmap.GlobalTime.GetTime(),
 	})
 	res := &ResultMsg{
-		Ret:      RETNO_OK,
+		Ret:      retno.RET_OK,
 		ActionID: log.ID,
 		Result:   "砍伐成功!获得木材",
 	}
 	if u.GetHP() <= 0 {
 		res.Result = "树已死亡,砍伐失败"
-		res.Ret = RETNO_ERROR
+		res.Ret = retno.RET_UNKNOWN_ERROR
 	}
 	u.SetHP(u.GetHP() - int32(rand.Intn(10)+10))
 	res.AwardList = map[uint32]uint32{ItemParamCfg.GetItemWood(): uint32(rand.Intn(2) + 1)}

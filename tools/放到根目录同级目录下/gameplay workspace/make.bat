@@ -60,10 +60,23 @@ REM 复制生成的C#文件到目标目录
 echo [INFO] Copying C# files...
 xcopy /Y /E "%GEN_CS%\*.cs" "%TARGET_CS%\" /I
 
-REM 复制生成的Go文件到目标目录
-echo [INFO] Copying Go files...
-xcopy /Y /E "%GEN_GO%\*.go" "%TARGET_GO%\" /I
+REM 复制生成的Go文件到目标目录（每个proto文件放到同名子目录）
+echo [INFO] Copying Go files to subdirectories...
+for %%F in ("%GEN_GO%\*.go") do (
+    set "FILENAME=%%~nxF"
+    setlocal enabledelayedexpansion
+    REM 判断是否为 _grpc.pb.go 结尾
+    set "DIRNAME=!FILENAME:_grpc.pb.go=!"
+    if "!DIRNAME!"=="!FILENAME!" (
+        set "DIRNAME=!FILENAME:.pb.go=!"    
+    )
+    if not exist "%TARGET_GO%\!DIRNAME!" mkdir "%TARGET_GO%\!DIRNAME!"
+    copy /Y "%%F" "%TARGET_GO%\!DIRNAME!\\"
+    endlocal
+)
+goto :after_copy
 
+:after_copy
 echo ==========================================
 echo [INFO] All files copied successfully!
 echo ==========================================
